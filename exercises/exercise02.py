@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import tensorflow as tf
 import numpy as np
 # Loads mnist data set.
@@ -11,7 +12,7 @@ n_labels = 10
 hidden_size = 500
 # Larger batch size => higher accuracy, less overfitting, longer waiting
 batch_size = 1000
-mnist = read_data_sets("data", one_hot=True)
+mnist = read_data_sets("../mnist", one_hot=True)
 
 def f(X, n_in, n_out):
     # f(X) = X.dot(W) where W is of shape (n_in, n_out)

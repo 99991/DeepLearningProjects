@@ -3,7 +3,8 @@
 # based on
 # https://www.tensorflow.org/versions/r0.11/tutorials/mnist/pros/index.html
 
-# only 91% accuracy after 400 epochs
+# 97% accuracy withc batch_size = 10
+# 98% accuracy withc batch_size = 100
 
 import tensorflow as tf
 import numpy as np
@@ -11,7 +12,7 @@ from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 
 image_size = 28*28
 n_labels = 10
-batch_size = 10
+batch_size = 100
 
 mnist = read_data_sets("../mnist", one_hot=True)
 
@@ -25,9 +26,9 @@ def max_pool_2x2(x):
   return tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
 
 # so many weights
-W_conv1 = make_weights([5, 5, 1, 32])
-b_conv1 = make_weights([32])
-W_conv2 = make_weights([5, 5, 32, 64])
+W_conv1 = make_weights([5, 5, 1, 8])
+b_conv1 = make_weights([8])
+W_conv2 = make_weights([5, 5, 8, 64])
 b_conv2 = make_weights([64])
 W_fc1 = make_weights([7 * 7 * 64, 1024])
 b_fc1 = make_weights([1024])
@@ -70,8 +71,8 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 train = tf.train.AdamOptimizer().minimize(loss)
 
 # tensorflow magic
-tf.initialize_all_variables().run()
 sess = tf.InteractiveSession()
+tf.initialize_all_variables().run()
 
 for epoch in range(1000+1):
     print("epoch %d"%epoch)
@@ -81,7 +82,7 @@ for epoch in range(1000+1):
     
     if epoch % 100 == 0:
         # calculate accuracy
-        feed_dict = {x: mnist.test.images, y: mnist.test.labels, keep_prob: 0.5}
+        feed_dict = {x: mnist.test.images, y: mnist.test.labels, keep_prob: 1.0}
         acc = sess.run(accuracy, feed_dict=feed_dict)
         print("%f accuracy"%acc)
         

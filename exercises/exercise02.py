@@ -32,12 +32,12 @@ y = f(y, hidden_size, n_labels)
 labels = tf.placeholder(tf.float32, [None, n_labels])
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y, labels))
 train = tf.train.AdamOptimizer().minimize(loss)
-sess = tf.InteractiveSession()
+sess = tf.InteractiveSession(config=tf.ConfigProto(log_device_placement=True))
 
 tf.initialize_all_variables().run()
 for n_batches in range(1000+1): # Run for 1001 epochs.
     batch_X, batch_labels = mnist.train.next_batch(batch_size)
-    sess.run(train, feed_dict={X: batch_X, labels: batch_labels})
+    print sess.run(train, feed_dict={X: batch_X, labels: batch_labels})
     if n_batches % 100 == 0: # Print accuracy sometimes.
         correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(labels, 1))
         accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))

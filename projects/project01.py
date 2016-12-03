@@ -5,6 +5,10 @@
 
 import tensorflow as tf
 import numpy as np
+
+np.random.seed(0)
+tf.set_random_seed(0)
+
 from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 
 # all this work for just 98.7% accuracy

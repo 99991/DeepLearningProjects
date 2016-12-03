@@ -14,6 +14,13 @@ from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 image_size = 28*28
 n_labels = 10
 batch_size = 1000
+conv1_kernel_size = 5
+conv2_kernel_size = 5
+conv1_num_kernels = 9
+conv2_num_kernels = 10
+fully_connected_1_size = 501
+fully_connected_2_size = 101
+fully_connected_3_size = 10
 
 mnist = read_data_sets("../mnist", one_hot=True)
 
@@ -49,17 +56,18 @@ def display_kernels(kernels, name):
         tf.image_summary('kernels', kernels, max_images=3)
 
 # so many weights
-W_conv1 = make_weights([5, 5, 1, 8], 'first conv layer weights')
-b_conv1 = make_weights([8], 'first conv layer biases')
-W_conv2 = make_weights([5, 5, 8, 9], 'second conv layer weights')
-b_conv2 = make_weights([9], 'second conv layer biases')
-flat_size = 7 * 7 * 9
-W_fc1 = make_weights([flat_size, 500], 'first fully connected layer weights')
-b_fc1 = make_weights([500], 'first fully connected layer biases')
-W_fc2 = make_weights([500, 100], 'second fully connected layer weights')
-b_fc2 = make_weights([100], 'second fully connected layer biases')
-W_fc3 = make_weights([100, 10], 'third fully connected layer weights')
-b_fc3 = make_weights([10], 'third fully connected layer biases')
+W_conv1 = make_weights([conv1_kernel_size, conv1_kernel_size, 1, conv1_num_kernels], 'first conv layer weights')
+b_conv1 = make_weights([conv1_num_kernels], 'first conv layer biases')
+W_conv2 = make_weights([conv2_kernel_size, conv2_kernel_size, conv1_num_kernels, conv2_num_kernels], 'second conv layer weights')
+b_conv2 = make_weights([conv2_num_kernels], 'second conv layer biases')
+# pooling twice reduces image size from 28x28 to 7x7
+flat_size = 7 * 7 * conv2_num_kernels
+W_fc1 = make_weights([flat_size, fully_connected_1_size], 'first fully connected layer weights')
+b_fc1 = make_weights([fully_connected_1_size], 'first fully connected layer biases')
+W_fc2 = make_weights([fully_connected_1_size, fully_connected_2_size], 'second fully connected layer weights')
+b_fc2 = make_weights([fully_connected_2_size], 'second fully connected layer biases')
+W_fc3 = make_weights([fully_connected_2_size, fully_connected_3_size], 'third fully connected layer weights')
+b_fc3 = make_weights([fully_connected_3_size], 'third fully connected layer biases')
 
 display_kernels(W_conv1, 'first conv layer kernels')
 

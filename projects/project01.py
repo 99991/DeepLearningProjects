@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 
-# based on
-# https://www.tensorflow.org/versions/r0.11/tutorials/mnist/pros/index.html
-
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 
 np.random.seed(0)
 tf.set_random_seed(0)
@@ -16,6 +14,13 @@ from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 image_size = 28*28
 n_labels = 10
 batch_size = 1000
+conv1_kernel_size = 5
+conv2_kernel_size = 5
+conv1_num_kernels = 9
+conv2_num_kernels = 10
+fully_connected_1_size = 501
+fully_connected_2_size = 101
+fully_connected_3_size = 10
 
 mnist = read_data_sets("../mnist", one_hot=True)
 
@@ -41,18 +46,30 @@ def conv2d(x, W):
 def max_pool_2x2(x):
   return tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
 
+def display_kernels(kernels, name):
+    name = name.replace(' ', '_')
+    with tf.variable_scope(name):
+        kernels_min = tf.reduce_min(kernels)
+        kernels_max = tf.reduce_max(kernels)
+        kernels = (kernels - kernels_min)/(kernels_max - kernels_min)
+        kernels = tf.transpose(kernels, [3, 0, 1, 2])
+        tf.image_summary('kernels', kernels, max_images=3)
+
 # so many weights
-W_conv1 = make_weights([5, 5, 1, 8], 'first conv layer weights')
-b_conv1 = make_weights([8], 'first conv layer biases')
-W_conv2 = make_weights([5, 5, 8, 9], 'second conv layer weights')
-b_conv2 = make_weights([9], 'second conv layer biases')
-flat_size = 7 * 7 * 9
-W_fc1 = make_weights([flat_size, 500], 'first fully connected layer weights')
-b_fc1 = make_weights([500], 'first fully connected layer biases')
-W_fc2 = make_weights([500, 100], 'second fully connected layer weights')
-b_fc2 = make_weights([100], 'second fully connected layer biases')
-W_fc3 = make_weights([100, 10], 'third fully connected layer weights')
-b_fc3 = make_weights([10], 'third fully connected layer biases')
+W_conv1 = make_weights([conv1_kernel_size, conv1_kernel_size, 1, conv1_num_kernels], 'first conv layer weights')
+b_conv1 = make_weights([conv1_num_kernels], 'first conv layer biases')
+W_conv2 = make_weights([conv2_kernel_size, conv2_kernel_size, conv1_num_kernels, conv2_num_kernels], 'second conv layer weights')
+b_conv2 = make_weights([conv2_num_kernels], 'second conv layer biases')
+# pooling twice reduces image size from 28x28 to 7x7
+flat_size = 7 * 7 * conv2_num_kernels
+W_fc1 = make_weights([flat_size, fully_connected_1_size], 'first fully connected layer weights')
+b_fc1 = make_weights([fully_connected_1_size], 'first fully connected layer biases')
+W_fc2 = make_weights([fully_connected_1_size, fully_connected_2_size], 'second fully connected layer weights')
+b_fc2 = make_weights([fully_connected_2_size], 'second fully connected layer biases')
+W_fc3 = make_weights([fully_connected_2_size, fully_connected_3_size], 'third fully connected layer weights')
+b_fc3 = make_weights([fully_connected_3_size], 'third fully connected layer biases')
+
+display_kernels(W_conv1, 'first conv layer kernels')
 
 # placeholders
 x = tf.placeholder(tf.float32, [None, image_size])
@@ -105,8 +122,8 @@ test_writer = tf.train.SummaryWriter(summaries_directory + "/test", sess.graph)
 # tensorflow magic
 tf.global_variables_initializer().run()
 
-for epoch in range(1000+1):
-    print("epoch %d"%epoch)
+for batch in range(1000+1):
+    print("batch %d"%batch)
     # train
     batch_train_x, batch_train_y = mnist.train.next_batch(batch_size)
     run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
@@ -116,13 +133,13 @@ for epoch in range(1000+1):
         options=run_options,
         run_metadata=run_metadata,
         feed_dict={x: batch_train_x, y: batch_train_y, keep_prob: 0.75})
-    train_writer.add_summary(summary, epoch)
-    train_writer.add_run_metadata(run_metadata, "epoch %d"%epoch)
+    train_writer.add_summary(summary, batch)
+    train_writer.add_run_metadata(run_metadata, "batch %d"%batch)
     
-    if epoch % 100 == 0:
+    if batch % 100 == 0:
         # calculate accuracy
         feed_dict = {x: mnist.test.images, y: mnist.test.labels, keep_prob: 1.0}
         summary, acc = sess.run([summaries, accuracy], feed_dict=feed_dict)
-        test_writer.add_summary(summary, epoch)
+        test_writer.add_summary(summary, batch)
         print("%f accuracy"%acc)
         

@@ -105,8 +105,8 @@ test_writer = tf.train.SummaryWriter(summaries_directory + "/test", sess.graph)
 # tensorflow magic
 tf.global_variables_initializer().run()
 
-for epoch in range(1000+1):
-    print("epoch %d"%epoch)
+for batch in range(1000+1):
+    print("batch %d"%batch)
     # train
     batch_train_x, batch_train_y = mnist.train.next_batch(batch_size)
     run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
@@ -116,13 +116,13 @@ for epoch in range(1000+1):
         options=run_options,
         run_metadata=run_metadata,
         feed_dict={x: batch_train_x, y: batch_train_y, keep_prob: 0.75})
-    train_writer.add_summary(summary, epoch)
-    train_writer.add_run_metadata(run_metadata, "epoch %d"%epoch)
+    train_writer.add_summary(summary, batch)
+    train_writer.add_run_metadata(run_metadata, "batch %d"%batch)
     
-    if epoch % 100 == 0:
+    if batch % 100 == 0:
         # calculate accuracy
         feed_dict = {x: mnist.test.images, y: mnist.test.labels, keep_prob: 1.0}
         summary, acc = sess.run([summaries, accuracy], feed_dict=feed_dict)
-        test_writer.add_summary(summary, epoch)
+        test_writer.add_summary(summary, batch)
         print("%f accuracy"%acc)
         

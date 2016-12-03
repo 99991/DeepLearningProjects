@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 
-# based on
-# https://www.tensorflow.org/versions/r0.11/tutorials/mnist/pros/index.html
-
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 
 np.random.seed(0)
 tf.set_random_seed(0)
@@ -41,6 +39,15 @@ def conv2d(x, W):
 def max_pool_2x2(x):
   return tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
 
+def display_kernels(kernels, name):
+    name = name.replace(' ', '_')
+    with tf.variable_scope(name):
+        kernels_min = tf.reduce_min(kernels)
+        kernels_max = tf.reduce_max(kernels)
+        kernels = (kernels - kernels_min)/(kernels_max - kernels_min)
+        kernels = tf.transpose(kernels, [3, 0, 1, 2])
+        tf.image_summary('kernels', kernels, max_images=3)
+
 # so many weights
 W_conv1 = make_weights([5, 5, 1, 8], 'first conv layer weights')
 b_conv1 = make_weights([8], 'first conv layer biases')
@@ -53,6 +60,8 @@ W_fc2 = make_weights([500, 100], 'second fully connected layer weights')
 b_fc2 = make_weights([100], 'second fully connected layer biases')
 W_fc3 = make_weights([100, 10], 'third fully connected layer weights')
 b_fc3 = make_weights([10], 'third fully connected layer biases')
+
+display_kernels(W_conv1, 'first conv layer kernels')
 
 # placeholders
 x = tf.placeholder(tf.float32, [None, image_size])

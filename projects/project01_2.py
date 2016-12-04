@@ -4,7 +4,6 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
-import matplotlib.pyplot as plt
 
 def run_nn(
 	batch_size = 64,

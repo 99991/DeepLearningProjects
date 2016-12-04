@@ -36,7 +36,8 @@ def run_nn(
 	#optimizer = tf.train.GradientDescentOptimizer(learning_rate)
 	optimizer = tf.train.AdamOptimizer(learning_rate)
 
-	flat_size = image_size**2*num_kernels1
+	# pool twice: image size 28x28 down to 7x7
+	flat_size = (image_size/4)**2*num_kernels1
 
 	conv1_weights = tf.Variable(tf.truncated_normal([kernel1_size, kernel1_size, 1, num_kernels1], stddev=0.1, seed=seed))
 	conv1_biases  = tf.Variable(tf.constant(0.0, tf.float32, [num_kernels1]))
@@ -54,11 +55,11 @@ def run_nn(
 	# conv relu pool
 	X = tf.nn.conv2d(X, conv1_weights, strides=[1,1,1,1], padding='SAME')
 	X = tf.nn.relu(tf.nn.bias_add(X, conv1_biases))
-	#X = tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
-	# conv relu pool
+	X = tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
+	#  conv relu pool
 	#X = tf.nn.conv2d(X, conv2_weights, strides=[1,1,1,1], padding='SAME')
 	#X = tf.nn.relu(tf.nn.bias_add(X, conv2_biases))
-	#X = tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
+	X = tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
 	# flatten data to row shape
 	X = tf.reshape(X, [-1, flat_size])
 	# relu(XW + b)
@@ -92,7 +93,7 @@ def run_nn(
 		sess.run([train], feed_dict=feed_dict)
 		
 		if batch % test_interval == 0:
-			feed_dict = {data:mnist.test.images[:1000], results:mnist.test.labels[:1000], keep_prob:1.0}
+			feed_dict = {data:mnist.test.images, results:mnist.test.labels, keep_prob:1.0}
 			weights, acc, lss = sess.run([conv1_weights, accuracy, loss], feed_dict=feed_dict)
 			print("batch %5d, accuracy %f, loss %f"%(batch, acc, lss))
 			
@@ -101,7 +102,7 @@ def run_nn(
 	
 	return accuracies, losses, weights
 
-accuracies, losses, weights = run_nn(num_batches=2001)
+# accuracies, losses, weights = run_nn(num_batches=2001)
 # kernel0 = weights[:, :, 0, 0]
 # kernel1 = weights[:, :, 0, 1]
 # kernel2 = weights[:, :, 0, 2]

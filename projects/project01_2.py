@@ -83,11 +83,30 @@ def run_nn(
 	correct_prediction = tf.equal(tf.argmax(results, 1), tf.argmax(Y, 1))
 	accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 	train = optimizer.minimize(loss)
+
 	sess = tf.InteractiveSession()
 	tf.global_variables_initializer().run()
 
 	accuracies = []
 	losses = []
+
+	print("===================================")
+	print("Running training, confirming input:")
+	print("-----------------------------------")
+	print("batch_size               = %i"%batch_size)
+	print("num_kernels1             = %i"%num_kernels1)
+	print("num_kernels2             = %i"%num_kernels2)
+	print("num_hidden               = %i"%num_hidden)
+	print("regularization_factor    = %f"%regularization_factor)
+	print("dropout_keep_probability = %f"%dropout_keep_probability)
+	print("learning_rate            = %f"%learning_rate)
+	print("kernel1_size             = %i"%kernel1_size)
+	print("kernel2_size             = %i"%kernel2_size)
+	print("test_interval            = %i"%test_interval)
+	print("num_batches              = %i"%num_batches)
+	print("seed                     = %i"%seed)
+	print("===================================")
+
 	for batch in range(num_batches):
 		batch_data, batch_results = mnist.train.next_batch(batch_size)
 		feed_dict = {data:batch_data, results:batch_results, keep_prob:dropout_keep_probability}
@@ -103,7 +122,7 @@ def run_nn(
 	
 	return accuracies, losses
 
-accuracies, losses = run_nn(num_batches=1001)
-plt.semilogy(losses)
-plt.semilogy(accuracies)
-plt.show()
+#accuracies, losses = run_nn(num_batches=1001)
+#plt.semilogy(losses)
+#plt.semilogy(accuracies)
+#plt.show()

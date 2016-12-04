@@ -4,16 +4,15 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
-import matplotlib.pyplot as plt
 
 def run_nn(
-	batch_size = 64,
-	num_kernels1 = 4,
+	batch_size = 1001,
+	num_kernels1 = 32,
 	num_hidden = 500,
 	regularization_factor = 1e-4,
 	dropout_keep_probability = 0.5,
 	learning_rate = 0.001,
-	kernel1_size = 11,
+	kernel1_size = 9,
 	kernel2_size = 5,
 	test_interval = 100,
 	num_batches=2001,
@@ -103,18 +102,18 @@ def run_nn(
 	
 	return accuracies, losses, weights
 
-accuracies, losses, weights = run_nn(num_batches=2001)
-kernel0 = weights[:, :, 0, 0]
-kernel1 = weights[:, :, 0, 1]
-kernel2 = weights[:, :, 0, 2]
-kernel3 = weights[:, :, 0, 3]
-fig = plt.figure()
-fig.add_subplot(2, 2, 1)
-plt.imshow(kernel0, cmap='gray')
-fig.add_subplot(2, 2, 2)
-plt.imshow(kernel1, cmap='gray')
-fig.add_subplot(2, 2, 3)
-plt.imshow(kernel2, cmap='gray')
-fig.add_subplot(2, 2, 4)
-plt.imshow(kernel3, cmap='gray')
-plt.show()
+# accuracies, losses, weights = run_nn(num_batches=2001)
+# kernel0 = weights[:, :, 0, 0]
+# kernel1 = weights[:, :, 0, 1]
+# kernel2 = weights[:, :, 0, 2]
+# kernel3 = weights[:, :, 0, 3]
+# fig = plt.figure()
+# fig.add_subplot(2, 2, 1)
+# plt.imshow(kernel0, cmap='gray')
+# fig.add_subplot(2, 2, 2)
+# plt.imshow(kernel1, cmap='gray')
+# fig.add_subplot(2, 2, 3)
+# plt.imshow(kernel2, cmap='gray')
+# fig.add_subplot(2, 2, 4)
+# plt.imshow(kernel3, cmap='gray')
+# plt.show()

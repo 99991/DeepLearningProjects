@@ -12,6 +12,12 @@ tf.set_random_seed(0)
 image_size = 28
 num_labels = 10
 
+# placeholders for training and testing data
+data          = tf.placeholder(tf.float32, [None, image_size**2])
+results       = tf.placeholder(tf.float32, [None, num_labels])
+keep_prob     = tf.placeholder(tf.float32)
+learning_rate = tf.placeholder(tf.float32)
+
 # configurable parameters
 batch_size = 64
 num_kernels1 = 4
@@ -19,9 +25,14 @@ num_kernels2 = 32
 num_hidden = 512
 regularization_factor = 1e-4
 dropout_keep_probability = 0.5
-learning_rate = 0.001
+# can be 0.1 for MomentumOptimizer or GradientDescentOptimizer
+initial_learning_rate = 0.001
+learning_rate_decay = 0.0
 kernel1_size = 5
 kernel2_size = 5
+#optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
+#optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+optimizer = tf.train.AdamOptimizer(learning_rate)
 
 # pool twice: image size 28x28 down to 7x7
 flat_size = (image_size/4)**2*num_kernels2
@@ -34,10 +45,6 @@ fc1_weights   = tf.Variable(tf.truncated_normal([flat_size, num_hidden], stddev=
 fc1_biases    = tf.Variable(tf.constant(0.1, tf.float32, [num_hidden]))
 fc2_weights   = tf.Variable(tf.truncated_normal([num_hidden, num_labels], stddev=0.1))
 fc2_biases    = tf.Variable(tf.constant(0.1, tf.float32, [num_labels]))
-
-data      = tf.placeholder(tf.float32, [None, image_size**2])
-results   = tf.placeholder(tf.float32, [None, num_labels])
-keep_prob = tf.placeholder(tf.float32)
 
 X = data
 # reshape data to image shape
@@ -71,18 +78,20 @@ loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(Y, results))
 loss += regularization_factor*regularization
 correct_prediction = tf.equal(tf.argmax(results, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-train = tf.train.AdamOptimizer(learning_rate).minimize(loss)
+train = optimizer.minimize(loss)
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
 
 mnist = read_data_sets("../mnist", one_hot=True)
 
+rate = initial_learning_rate
 for batch in range(10000+1):
 	batch_data, batch_results = mnist.train.next_batch(batch_size)
-	feed_dict = {data:batch_data, results:batch_results, keep_prob:dropout_keep_probability}
+	feed_dict = {data:batch_data, results:batch_results, keep_prob:dropout_keep_probability, learning_rate:rate}
 	sess.run([train], feed_dict=feed_dict)
 	
 	if batch % 100 == 0:
+		rate *= 1.0 - learning_rate_decay
 		feed_dict = {data:mnist.test.images, results:mnist.test.labels, keep_prob:1.0}
-		acc, = sess.run([accuracy], feed_dict=feed_dict)
-		print("batch %5d: %f accuracy"%(batch, acc))
+		acc, lss = sess.run([accuracy, loss], feed_dict=feed_dict)
+		print("batch %5d, rate %f, accuracy %f, loss %f"%(batch, rate, acc, lss))

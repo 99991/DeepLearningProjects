@@ -1,0 +1,82 @@
+1.
+describe architecture:
+	number of conv/pool layers
+	fully connected layer size
+	activation functions
+	dropout
+	regularization
+
+conv relu pool
+conv relu pool
+linear layer (XW + b)
+relu
+dropout
+linear layer (XW + b)
+softmax cross entropy loss with regularization
+
+why?
+because this is "best" configuration we could find
+"best" = small -> fast training, high accuracy
+also other conv nets on mnist website are not much better
+
+2.
+AdamOptimizer used
+Momentum works, too
+TODO
+	try other optimizers
+TODO
+	how are we supposed to measure performance of training?
+	time taken per accuracy does not make sense
+	because accuracy is task 3
+
+3.
+TODO
+	"Test and evaluate your CNN. Explain your result."
+	the accuracy is <value> vecause weights are <value>?
+	no idea what is asked in this question
+
+4.
+sources of randomness:
+	weight initialization
+	dropout
+	batch selection from training data
+solution:
+	seed prngs
+still different on different computers
+	different prng implementation?
+
+5.
+more optimizations -> higher accuracy until it tops of
+TODO
+	measure time of runs
+	absolutely meaningless though since results are different
+		on different PCs
+		with different neural net configurations
+
+6.
+learning rate too low -> learning takes forever
+learning rate too high -> accuracy does not improve
+TODO
+	decay learning rate to get fast learning at beginning and max accuracy at end
+
+7.
+kernel features too small to see anything
+TODO
+	try bigger kernels (11x11 maybe)
+	if features look bad, try dropout
+
+8.
+TODO
+	try more layers
+	does dropout matter?
+	does regularization matter?
+	maybe dropout/regularization only matter with more layers?
+	evaluate accuracy after how many steps?
+
+9.
+smallest configuration with "good" (whatever that means) results?
+probably result of task 8
+
+10.
+TODO
+	make network that does not use pooling, only conv

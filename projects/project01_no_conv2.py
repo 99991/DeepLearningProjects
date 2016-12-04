@@ -91,7 +91,7 @@ def run_nn(
 		sess.run([train], feed_dict=feed_dict)
 		
 		if batch % test_interval == 0:
-			feed_dict = {data:mnist.test.images[:1000], results:mnist.test.labels[:1000], keep_prob:1.0}
+			feed_dict = {data:mnist.test.images, results:mnist.test.labels, keep_prob:1.0}
 			weights, acc, lss = sess.run([conv1_weights, accuracy, loss], feed_dict=feed_dict)
 			print("batch %5d, accuracy %f, loss %f"%(batch, acc, lss))
 			

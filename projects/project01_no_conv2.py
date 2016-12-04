@@ -6,16 +6,15 @@ import matplotlib.pyplot as plt
 from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 
 def run_nn(
-	batch_size = 1001,
-	num_kernels1 = 32,
+	batch_size = 501,
+	num_kernels1 = 8,
 	num_hidden = 500,
 	regularization_factor = 1e-4,
 	dropout_keep_probability = 0.5,
 	learning_rate = 0.001,
 	kernel1_size = 9,
-	kernel2_size = 5,
 	test_interval = 100,
-	num_batches=2001,
+	num_batches=10001,
 	seed=666):
 
 	# make runs deterministic
@@ -101,7 +100,7 @@ def run_nn(
 	
 	return accuracies, losses, weights
 
-accuracies, losses, weights = run_nn(num_batches=2001)
+# accuracies, losses, weights = run_nn(num_batches=2001)
 # kernel0 = weights[:, :, 0, 0]
 # kernel1 = weights[:, :, 0, 1]
 # kernel2 = weights[:, :, 0, 2]

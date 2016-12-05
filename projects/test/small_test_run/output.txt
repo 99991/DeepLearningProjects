@@ -1,0 +1,1645 @@
+Finished at: 00:42:27 12/05/16 CET
+Running time: 374.336914 seconds
+Arguments:num_hidden 2048
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.211100, loss 2.460642
+accuracy 0.879000, loss 0.550840
+accuracy 0.914900, loss 0.417272
+accuracy 0.935500, loss 0.355483
+accuracy 0.942800, loss 0.321486
+accuracy 0.944000, loss 0.312557
+accuracy 0.949100, loss 0.284454
+accuracy 0.951800, loss 0.273416
+accuracy 0.949600, loss 0.273674
+accuracy 0.962500, loss 0.235910
+accuracy 0.965100, loss 0.223213
+accuracy 0.965200, loss 0.220664
+accuracy 0.964700, loss 0.218676
+accuracy 0.967800, loss 0.202664
+accuracy 0.969200, loss 0.200104
+accuracy 0.967300, loss 0.204388
+accuracy 0.966100, loss 0.203727
+accuracy 0.973400, loss 0.179187
+accuracy 0.971400, loss 0.180236
+accuracy 0.972700, loss 0.177214
+accuracy 0.970500, loss 0.177343
+
+Finished at: 00:43:59 12/05/16 CET
+Running time: 291.188368 seconds
+Arguments:num_hidden 1024
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.122600, loss 2.403533
+accuracy 0.852200, loss 0.558366
+accuracy 0.891000, loss 0.425662
+accuracy 0.919800, loss 0.343920
+accuracy 0.930200, loss 0.309635
+accuracy 0.933000, loss 0.298374
+accuracy 0.940100, loss 0.269126
+accuracy 0.947600, loss 0.237052
+accuracy 0.944800, loss 0.243117
+accuracy 0.956800, loss 0.206340
+accuracy 0.957900, loss 0.204675
+accuracy 0.960200, loss 0.193619
+accuracy 0.957200, loss 0.195682
+accuracy 0.963400, loss 0.177674
+accuracy 0.963500, loss 0.178078
+accuracy 0.964900, loss 0.176134
+accuracy 0.967400, loss 0.170210
+accuracy 0.970900, loss 0.158564
+accuracy 0.967600, loss 0.162932
+accuracy 0.971600, loss 0.152663
+accuracy 0.971000, loss 0.149619
+
+Finished at: 00:45:20 12/05/16 CET
+Running time: 250.728799 seconds
+Arguments:num_hidden 512
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.128100, loss 2.386476
+accuracy 0.832700, loss 0.607169
+accuracy 0.876800, loss 0.439062
+accuracy 0.913200, loss 0.351841
+accuracy 0.918900, loss 0.312215
+accuracy 0.922700, loss 0.298068
+accuracy 0.932700, loss 0.266591
+accuracy 0.933800, loss 0.250429
+accuracy 0.937800, loss 0.244315
+accuracy 0.948000, loss 0.207444
+accuracy 0.953700, loss 0.199335
+accuracy 0.953000, loss 0.195279
+accuracy 0.951600, loss 0.199727
+accuracy 0.956900, loss 0.176242
+accuracy 0.959100, loss 0.174437
+accuracy 0.958100, loss 0.175378
+accuracy 0.962500, loss 0.163464
+accuracy 0.962300, loss 0.158041
+accuracy 0.964000, loss 0.156247
+accuracy 0.965900, loss 0.149899
+accuracy 0.966700, loss 0.145285
+
+Finished at: 00:46:53 12/05/16 CET
+Running time: 295.105575 seconds
+Arguments:num_hidden 256
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.202400, loss 2.318162
+accuracy 0.811400, loss 0.700142
+accuracy 0.859300, loss 0.477955
+accuracy 0.904200, loss 0.363260
+accuracy 0.904400, loss 0.326454
+accuracy 0.918400, loss 0.294716
+accuracy 0.929100, loss 0.264213
+accuracy 0.931800, loss 0.243413
+accuracy 0.931800, loss 0.240530
+accuracy 0.940500, loss 0.215575
+accuracy 0.941100, loss 0.209965
+accuracy 0.945000, loss 0.201068
+accuracy 0.947200, loss 0.190628
+accuracy 0.950800, loss 0.181316
+accuracy 0.949100, loss 0.183156
+accuracy 0.948700, loss 0.185770
+accuracy 0.952100, loss 0.171383
+accuracy 0.954100, loss 0.162542
+accuracy 0.955700, loss 0.160990
+accuracy 0.959000, loss 0.153434
+accuracy 0.958500, loss 0.149227
+
+Finished at: 00:48:13 12/05/16 CET
+Running time: 252.635089 seconds
+Arguments:num_hidden 128
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.134200, loss 2.324403
+accuracy 0.759900, loss 0.924408
+accuracy 0.826800, loss 0.591028
+accuracy 0.869100, loss 0.472050
+accuracy 0.880700, loss 0.427743
+accuracy 0.885200, loss 0.398667
+accuracy 0.896600, loss 0.362156
+accuracy 0.897400, loss 0.351838
+accuracy 0.897200, loss 0.344727
+accuracy 0.911000, loss 0.307045
+accuracy 0.912900, loss 0.294389
+accuracy 0.921500, loss 0.280179
+accuracy 0.920500, loss 0.279586
+accuracy 0.925400, loss 0.260604
+accuracy 0.927700, loss 0.254834
+accuracy 0.928100, loss 0.255858
+accuracy 0.932800, loss 0.236133
+accuracy 0.935800, loss 0.226216
+accuracy 0.938400, loss 0.221956
+accuracy 0.939600, loss 0.213494
+accuracy 0.942000, loss 0.210002
+
+Finished at: 00:49:24 12/05/16 CET
+Running time: 217.749083 seconds
+Arguments:num_hidden 64
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.090100, loss 2.319213
+accuracy 0.740700, loss 1.283955
+accuracy 0.829700, loss 0.652580
+accuracy 0.879700, loss 0.470419
+accuracy 0.892100, loss 0.404496
+accuracy 0.904200, loss 0.352752
+accuracy 0.913900, loss 0.317924
+accuracy 0.916700, loss 0.295976
+accuracy 0.920600, loss 0.277056
+accuracy 0.928000, loss 0.258521
+accuracy 0.928000, loss 0.249287
+accuracy 0.930700, loss 0.245719
+accuracy 0.932000, loss 0.234575
+accuracy 0.935500, loss 0.222636
+accuracy 0.937400, loss 0.217479
+accuracy 0.938600, loss 0.214014
+accuracy 0.940300, loss 0.204356
+accuracy 0.940400, loss 0.202948
+accuracy 0.943800, loss 0.195111
+accuracy 0.944100, loss 0.191327
+accuracy 0.944600, loss 0.188524
+
+Finished at: 00:50:42 12/05/16 CET
+Running time: 223.157272 seconds
+Arguments:num_hidden 32
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.102200, loss 2.308719
+accuracy 0.691200, loss 1.617607
+accuracy 0.797500, loss 0.878838
+accuracy 0.847100, loss 0.629433
+accuracy 0.859500, loss 0.537211
+accuracy 0.876800, loss 0.458678
+accuracy 0.890500, loss 0.427131
+accuracy 0.892800, loss 0.398521
+accuracy 0.895200, loss 0.373019
+accuracy 0.903900, loss 0.342891
+accuracy 0.909200, loss 0.324316
+accuracy 0.909900, loss 0.320308
+accuracy 0.909600, loss 0.313102
+accuracy 0.916700, loss 0.296674
+accuracy 0.917400, loss 0.291253
+accuracy 0.919800, loss 0.290597
+accuracy 0.920100, loss 0.276378
+accuracy 0.922600, loss 0.268938
+accuracy 0.927500, loss 0.265881
+accuracy 0.928600, loss 0.260495
+accuracy 0.928200, loss 0.253012
+
+Finished at: 00:51:52 12/05/16 CET
+Running time: 212.387605 seconds
+Arguments:num_hidden 16
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.100600, loss 2.302643
+accuracy 0.517600, loss 1.904291
+accuracy 0.741300, loss 1.173733
+accuracy 0.804800, loss 0.858288
+accuracy 0.822400, loss 0.757979
+accuracy 0.845300, loss 0.638275
+accuracy 0.860100, loss 0.616076
+accuracy 0.861100, loss 0.584210
+accuracy 0.873500, loss 0.529576
+accuracy 0.882400, loss 0.502504
+accuracy 0.891300, loss 0.469826
+accuracy 0.896700, loss 0.452189
+accuracy 0.897200, loss 0.447783
+accuracy 0.897000, loss 0.446144
+accuracy 0.899900, loss 0.427866
+accuracy 0.900400, loss 0.418709
+accuracy 0.905500, loss 0.402183
+accuracy 0.905000, loss 0.395405
+accuracy 0.911800, loss 0.386152
+accuracy 0.912200, loss 0.382088
+accuracy 0.909800, loss 0.384107
+
+Finished at: 00:54:20 12/05/16 CET
+Running time: 508.246027 seconds
+Arguments:num_hidden 100
+num_kernels1 32
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.086700, loss 2.357749
+accuracy 0.860900, loss 0.559803
+accuracy 0.913800, loss 0.351252
+accuracy 0.941700, loss 0.265491
+accuracy 0.948000, loss 0.226136
+accuracy 0.952300, loss 0.210594
+accuracy 0.957600, loss 0.190766
+accuracy 0.962000, loss 0.169435
+accuracy 0.960800, loss 0.168968
+accuracy 0.968900, loss 0.150265
+accuracy 0.967900, loss 0.147355
+accuracy 0.970500, loss 0.143092
+accuracy 0.970800, loss 0.137122
+accuracy 0.972200, loss 0.136594
+accuracy 0.974600, loss 0.127897
+accuracy 0.975900, loss 0.125096
+accuracy 0.975300, loss 0.122438
+accuracy 0.976800, loss 0.124023
+accuracy 0.977100, loss 0.120182
+accuracy 0.978200, loss 0.115454
+accuracy 0.977100, loss 0.117926
+
+Finished at: 00:55:58 12/05/16 CET
+Running time: 324.625284 seconds
+Arguments:num_hidden 100
+num_kernels1 16
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.197800, loss 2.331892
+accuracy 0.834700, loss 0.646336
+accuracy 0.897700, loss 0.384712
+accuracy 0.933400, loss 0.276427
+accuracy 0.941700, loss 0.232940
+accuracy 0.946100, loss 0.212981
+accuracy 0.950000, loss 0.194259
+accuracy 0.957200, loss 0.175415
+accuracy 0.957900, loss 0.166958
+accuracy 0.961800, loss 0.152276
+accuracy 0.964800, loss 0.147314
+accuracy 0.966200, loss 0.143275
+accuracy 0.965500, loss 0.138544
+accuracy 0.967000, loss 0.134780
+accuracy 0.969700, loss 0.123490
+accuracy 0.969500, loss 0.129733
+accuracy 0.971900, loss 0.125241
+accuracy 0.972500, loss 0.117278
+accuracy 0.973400, loss 0.114166
+accuracy 0.973000, loss 0.113596
+accuracy 0.975500, loss 0.111757
+
+Finished at: 00:57:22 12/05/16 CET
+Running time: 278.149075 seconds
+Arguments:num_hidden 100
+num_kernels1 8
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.102500, loss 2.329276
+accuracy 0.792500, loss 0.802325
+accuracy 0.870700, loss 0.470702
+accuracy 0.913900, loss 0.342340
+accuracy 0.925000, loss 0.288942
+accuracy 0.928900, loss 0.254727
+accuracy 0.939500, loss 0.229149
+accuracy 0.942900, loss 0.205839
+accuracy 0.948000, loss 0.197643
+accuracy 0.954500, loss 0.174261
+accuracy 0.953200, loss 0.165449
+accuracy 0.955700, loss 0.164236
+accuracy 0.955500, loss 0.161284
+accuracy 0.959300, loss 0.149222
+accuracy 0.962600, loss 0.140174
+accuracy 0.963000, loss 0.138240
+accuracy 0.965100, loss 0.132954
+accuracy 0.965300, loss 0.126385
+accuracy 0.965800, loss 0.124914
+accuracy 0.967100, loss 0.122149
+accuracy 0.966300, loss 0.124524
+
+Finished at: 00:58:34 12/05/16 CET
+Running time: 220.645061 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 00:59:44 12/05/16 CET
+Running time: 211.856223 seconds
+Arguments:num_hidden 100
+num_kernels1 2
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.102800, loss 2.307381
+accuracy 0.727300, loss 1.293294
+accuracy 0.811900, loss 0.672388
+accuracy 0.855400, loss 0.524998
+accuracy 0.867900, loss 0.468947
+accuracy 0.881100, loss 0.422858
+accuracy 0.890200, loss 0.385303
+accuracy 0.892800, loss 0.369128
+accuracy 0.892800, loss 0.352694
+accuracy 0.903600, loss 0.321265
+accuracy 0.908000, loss 0.311652
+accuracy 0.912800, loss 0.300261
+accuracy 0.915600, loss 0.293044
+accuracy 0.918600, loss 0.279313
+accuracy 0.918700, loss 0.275372
+accuracy 0.924000, loss 0.267861
+accuracy 0.922600, loss 0.256624
+accuracy 0.922400, loss 0.255043
+accuracy 0.926700, loss 0.252026
+accuracy 0.927800, loss 0.242380
+accuracy 0.930000, loss 0.237754
+
+Finished at: 01:00:50 12/05/16 CET
+Running time: 198.415100 seconds
+Arguments:num_hidden 100
+num_kernels1 1
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.102800, loss 2.306488
+accuracy 0.636500, loss 1.976436
+accuracy 0.774300, loss 0.871606
+accuracy 0.826400, loss 0.644331
+accuracy 0.836600, loss 0.579046
+accuracy 0.844100, loss 0.529986
+accuracy 0.856800, loss 0.491526
+accuracy 0.863600, loss 0.463321
+accuracy 0.864600, loss 0.452931
+accuracy 0.869500, loss 0.430298
+accuracy 0.877400, loss 0.408586
+accuracy 0.880500, loss 0.398632
+accuracy 0.882500, loss 0.387529
+accuracy 0.887000, loss 0.377141
+accuracy 0.888300, loss 0.370546
+accuracy 0.892200, loss 0.360444
+accuracy 0.892300, loss 0.353712
+accuracy 0.895300, loss 0.343918
+accuracy 0.897000, loss 0.343313
+accuracy 0.899600, loss 0.334712
+accuracy 0.897800, loss 0.335971
+
+Finished at: 01:04:13 12/05/16 CET
+Running time: 730.074480 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 1
+accuracy 0.097900, loss 2.430032
+accuracy 0.880000, loss 0.508336
+accuracy 0.906200, loss 0.388315
+accuracy 0.925200, loss 0.322491
+accuracy 0.929400, loss 0.304788
+accuracy 0.930000, loss 0.290735
+accuracy 0.939400, loss 0.263879
+accuracy 0.945400, loss 0.246300
+accuracy 0.946300, loss 0.237868
+accuracy 0.951900, loss 0.220307
+accuracy 0.953400, loss 0.214614
+accuracy 0.954900, loss 0.211813
+accuracy 0.956800, loss 0.200379
+accuracy 0.956000, loss 0.197093
+accuracy 0.961800, loss 0.185668
+accuracy 0.960800, loss 0.191963
+accuracy 0.963900, loss 0.178019
+accuracy 0.965900, loss 0.172427
+accuracy 0.963900, loss 0.173831
+accuracy 0.965700, loss 0.169144
+accuracy 0.966800, loss 0.169224
+
+Finished at: 01:05:56 12/05/16 CET
+Running time: 342.756177 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 2
+accuracy 0.133500, loss 2.349766
+accuracy 0.847300, loss 0.601825
+accuracy 0.891200, loss 0.404917
+accuracy 0.914500, loss 0.333358
+accuracy 0.923100, loss 0.298501
+accuracy 0.925900, loss 0.271877
+accuracy 0.931200, loss 0.251836
+accuracy 0.935600, loss 0.237473
+accuracy 0.941700, loss 0.222234
+accuracy 0.946700, loss 0.207744
+accuracy 0.947900, loss 0.196078
+accuracy 0.950900, loss 0.195891
+accuracy 0.951000, loss 0.181829
+accuracy 0.952200, loss 0.175877
+accuracy 0.956700, loss 0.168394
+accuracy 0.957100, loss 0.163760
+accuracy 0.955500, loss 0.163498
+accuracy 0.959300, loss 0.155432
+accuracy 0.960500, loss 0.152894
+accuracy 0.962200, loss 0.145512
+accuracy 0.960600, loss 0.153520
+
+Finished at: 01:07:08 12/05/16 CET
+Running time: 220.739835 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 01:10:13 12/05/16 CET
+Running time: 623.097062 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 7
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.083800, loss 2.382733
+accuracy 0.848600, loss 0.722069
+accuracy 0.902500, loss 0.373208
+accuracy 0.928200, loss 0.269903
+accuracy 0.935900, loss 0.228320
+accuracy 0.938400, loss 0.210588
+accuracy 0.948000, loss 0.187210
+accuracy 0.954000, loss 0.167081
+accuracy 0.953800, loss 0.161382
+accuracy 0.955000, loss 0.154479
+accuracy 0.958800, loss 0.141676
+accuracy 0.958900, loss 0.138821
+accuracy 0.961600, loss 0.128923
+accuracy 0.962700, loss 0.126053
+accuracy 0.966000, loss 0.119263
+accuracy 0.965000, loss 0.119754
+accuracy 0.967700, loss 0.110991
+accuracy 0.969600, loss 0.109043
+accuracy 0.969700, loss 0.105937
+accuracy 0.968600, loss 0.107081
+accuracy 0.972000, loss 0.099362
+
+Finished at: 01:12:12 12/05/16 CET
+Running time: 381.639177 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 5
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.100300, loss 2.339246
+accuracy 0.823800, loss 0.787937
+accuracy 0.890300, loss 0.418881
+accuracy 0.920600, loss 0.300094
+accuracy 0.929200, loss 0.255552
+accuracy 0.936700, loss 0.220411
+accuracy 0.944200, loss 0.201676
+accuracy 0.949600, loss 0.180129
+accuracy 0.950100, loss 0.174284
+accuracy 0.955100, loss 0.158268
+accuracy 0.958100, loss 0.149065
+accuracy 0.958500, loss 0.149802
+accuracy 0.958900, loss 0.139322
+accuracy 0.961700, loss 0.133549
+accuracy 0.963200, loss 0.127681
+accuracy 0.962800, loss 0.131606
+accuracy 0.964300, loss 0.123098
+accuracy 0.966300, loss 0.118038
+accuracy 0.966600, loss 0.116827
+accuracy 0.968500, loss 0.109756
+accuracy 0.968900, loss 0.109224
+
+Finished at: 01:13:24 12/05/16 CET
+Running time: 220.444200 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 01:14:37 12/05/16 CET
+Running time: 225.392075 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.01
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.135900, loss 2.290990
+accuracy 0.865600, loss 0.455832
+accuracy 0.899200, loss 0.334947
+accuracy 0.928500, loss 0.275891
+accuracy 0.937900, loss 0.223557
+accuracy 0.938600, loss 0.232006
+accuracy 0.938400, loss 0.231948
+accuracy 0.956400, loss 0.185238
+accuracy 0.950900, loss 0.202899
+accuracy 0.961800, loss 0.164437
+accuracy 0.958200, loss 0.174308
+accuracy 0.962800, loss 0.162604
+accuracy 0.967200, loss 0.156531
+accuracy 0.956200, loss 0.183376
+accuracy 0.967200, loss 0.156018
+accuracy 0.969000, loss 0.148692
+accuracy 0.968100, loss 0.153853
+accuracy 0.971900, loss 0.146622
+accuracy 0.963100, loss 0.168454
+accuracy 0.965400, loss 0.161729
+accuracy 0.970700, loss 0.152091
+
+Finished at: 01:15:48 12/05/16 CET
+Running time: 220.571781 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 01:17:01 12/05/16 CET
+Running time: 220.714653 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.0001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.093700, loss 2.328259
+accuracy 0.187600, loss 2.266089
+accuracy 0.459500, loss 2.192312
+accuracy 0.611200, loss 2.070625
+accuracy 0.668800, loss 1.898175
+accuracy 0.702600, loss 1.694909
+accuracy 0.718900, loss 1.486731
+accuracy 0.745900, loss 1.300618
+accuracy 0.764500, loss 1.154219
+accuracy 0.776000, loss 1.034190
+accuracy 0.785000, loss 0.942917
+accuracy 0.793900, loss 0.871245
+accuracy 0.802500, loss 0.812496
+accuracy 0.814700, loss 0.762322
+accuracy 0.819500, loss 0.723510
+accuracy 0.826700, loss 0.685534
+accuracy 0.835500, loss 0.654556
+accuracy 0.842200, loss 0.627401
+accuracy 0.848000, loss 0.603124
+accuracy 0.850300, loss 0.582898
+accuracy 0.854700, loss 0.563948
+
+Finished at: 01:18:13 12/05/16 CET
+Running time: 221.117035 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 1e-06
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.092600, loss 2.328802
+accuracy 0.093000, loss 2.328119
+accuracy 0.093400, loss 2.327464
+accuracy 0.094300, loss 2.326790
+accuracy 0.094800, loss 2.326101
+accuracy 0.095400, loss 2.325457
+accuracy 0.095800, loss 2.324788
+accuracy 0.096500, loss 2.324115
+accuracy 0.097300, loss 2.323444
+accuracy 0.097700, loss 2.322772
+accuracy 0.097800, loss 2.322123
+accuracy 0.098000, loss 2.321457
+accuracy 0.098100, loss 2.320797
+accuracy 0.099000, loss 2.320166
+accuracy 0.100000, loss 2.319528
+accuracy 0.100800, loss 2.318875
+accuracy 0.101900, loss 2.318244
+accuracy 0.102100, loss 2.317587
+accuracy 0.103300, loss 2.316941
+accuracy 0.103900, loss 2.316313
+accuracy 0.104000, loss 2.315666
+
+Finished at: 01:19:29 12/05/16 CET
+Running time: 234.874455 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 10
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.093400, loss 787.717163
+accuracy 0.101500, loss 105.699852
+accuracy 0.113500, loss 13.358858
+accuracy 0.113500, loss 3.150995
+accuracy 0.113500, loss 2.346279
+accuracy 0.113500, loss 2.304024
+accuracy 0.113500, loss 2.302611
+accuracy 0.113500, loss 2.302580
+accuracy 0.101000, loss 2.302583
+accuracy 0.098000, loss 2.302589
+accuracy 0.113500, loss 2.302618
+accuracy 0.098000, loss 2.302575
+accuracy 0.102800, loss 2.302597
+accuracy 0.113500, loss 2.302581
+accuracy 0.113500, loss 2.302569
+accuracy 0.101000, loss 2.302584
+accuracy 0.101000, loss 2.302598
+accuracy 0.101000, loss 2.302590
+accuracy 0.113500, loss 2.302635
+accuracy 0.113500, loss 2.302588
+accuracy 0.113500, loss 2.302618
+
+Finished at: 01:20:51 12/05/16 CET
+Running time: 245.018351 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 1
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.093100, loss 80.859924
+accuracy 0.101500, loss 12.649305
+accuracy 0.113500, loss 3.409179
+accuracy 0.113500, loss 2.387397
+accuracy 0.113500, loss 2.306879
+accuracy 0.113500, loss 2.302600
+accuracy 0.113500, loss 2.302467
+accuracy 0.113500, loss 2.302508
+accuracy 0.101000, loss 2.302541
+accuracy 0.102800, loss 2.302573
+accuracy 0.113500, loss 2.302613
+accuracy 0.113500, loss 2.302555
+accuracy 0.113500, loss 2.302523
+accuracy 0.113500, loss 2.302472
+accuracy 0.113500, loss 2.302490
+accuracy 0.102800, loss 2.302469
+accuracy 0.113500, loss 2.302462
+accuracy 0.113500, loss 2.302524
+accuracy 0.113500, loss 2.302494
+accuracy 0.113500, loss 2.302487
+accuracy 0.113500, loss 2.302559
+
+Finished at: 01:22:03 12/05/16 CET
+Running time: 221.327834 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.315500
+accuracy 0.752100, loss 1.020770
+accuracy 0.824600, loss 0.611633
+accuracy 0.877600, loss 0.457091
+accuracy 0.887900, loss 0.394732
+accuracy 0.896900, loss 0.348374
+accuracy 0.908700, loss 0.316735
+accuracy 0.914500, loss 0.289312
+accuracy 0.912300, loss 0.284888
+accuracy 0.922600, loss 0.261719
+accuracy 0.926700, loss 0.240583
+accuracy 0.930100, loss 0.231255
+accuracy 0.932900, loss 0.223947
+accuracy 0.934300, loss 0.215047
+accuracy 0.933600, loss 0.212645
+accuracy 0.937300, loss 0.204618
+accuracy 0.939500, loss 0.194317
+accuracy 0.940000, loss 0.191800
+accuracy 0.941500, loss 0.184613
+accuracy 0.942600, loss 0.180318
+accuracy 0.944700, loss 0.177935
+
+Finished at: 01:23:26 12/05/16 CET
+Running time: 245.272318 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 1
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.093100, loss 80.859924
+accuracy 0.101500, loss 12.649305
+accuracy 0.113500, loss 3.409179
+accuracy 0.113500, loss 2.387397
+accuracy 0.113500, loss 2.306879
+accuracy 0.113500, loss 2.302600
+accuracy 0.113500, loss 2.302467
+accuracy 0.113500, loss 2.302508
+accuracy 0.101000, loss 2.302541
+accuracy 0.102800, loss 2.302573
+accuracy 0.113500, loss 2.302613
+accuracy 0.113500, loss 2.302555
+accuracy 0.113500, loss 2.302523
+accuracy 0.113500, loss 2.302472
+accuracy 0.113500, loss 2.302490
+accuracy 0.102800, loss 2.302469
+accuracy 0.113500, loss 2.302462
+accuracy 0.113500, loss 2.302524
+accuracy 0.113500, loss 2.302494
+accuracy 0.113500, loss 2.302487
+accuracy 0.113500, loss 2.302559
+
+Finished at: 01:24:38 12/05/16 CET
+Running time: 220.654066 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.01
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098600, loss 3.104558
+accuracy 0.734700, loss 1.480530
+accuracy 0.814400, loss 0.960498
+accuracy 0.866600, loss 0.793409
+accuracy 0.879400, loss 0.723793
+accuracy 0.886700, loss 0.676658
+accuracy 0.892800, loss 0.653197
+accuracy 0.905100, loss 0.614332
+accuracy 0.900000, loss 0.600962
+accuracy 0.901400, loss 0.578526
+accuracy 0.913100, loss 0.538621
+accuracy 0.912400, loss 0.545764
+accuracy 0.916900, loss 0.519109
+accuracy 0.919300, loss 0.506569
+accuracy 0.921200, loss 0.497247
+accuracy 0.922500, loss 0.493440
+accuracy 0.924500, loss 0.471728
+accuracy 0.926300, loss 0.462405
+accuracy 0.922600, loss 0.470292
+accuracy 0.925900, loss 0.456018
+accuracy 0.927600, loss 0.457758
+
+Finished at: 01:25:49 12/05/16 CET
+Running time: 220.823954 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.394759
+accuracy 0.751100, loss 1.093580
+accuracy 0.824000, loss 0.681397
+accuracy 0.878400, loss 0.532423
+accuracy 0.888300, loss 0.473803
+accuracy 0.897500, loss 0.430439
+accuracy 0.908300, loss 0.400725
+accuracy 0.914200, loss 0.376672
+accuracy 0.912800, loss 0.366962
+accuracy 0.919400, loss 0.347893
+accuracy 0.926400, loss 0.327984
+accuracy 0.929600, loss 0.321356
+accuracy 0.932500, loss 0.310509
+accuracy 0.933400, loss 0.301433
+accuracy 0.934800, loss 0.300183
+accuracy 0.937500, loss 0.291348
+accuracy 0.937900, loss 0.283715
+accuracy 0.938900, loss 0.275634
+accuracy 0.941400, loss 0.272804
+accuracy 0.941700, loss 0.269167
+accuracy 0.942800, loss 0.267210
+
+Finished at: 01:27:01 12/05/16 CET
+Running time: 221.320389 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 01:28:13 12/05/16 CET
+Running time: 221.451464 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 1e-06
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.315581
+accuracy 0.752000, loss 1.020974
+accuracy 0.824700, loss 0.611518
+accuracy 0.878000, loss 0.457072
+accuracy 0.888400, loss 0.394838
+accuracy 0.896900, loss 0.349417
+accuracy 0.908300, loss 0.317738
+accuracy 0.914200, loss 0.290684
+accuracy 0.911400, loss 0.285079
+accuracy 0.921900, loss 0.261288
+accuracy 0.926500, loss 0.240748
+accuracy 0.930000, loss 0.231259
+accuracy 0.932700, loss 0.223671
+accuracy 0.934200, loss 0.215381
+accuracy 0.933700, loss 0.213290
+accuracy 0.937300, loss 0.205188
+accuracy 0.940100, loss 0.194017
+accuracy 0.940000, loss 0.191616
+accuracy 0.941500, loss 0.184593
+accuracy 0.941900, loss 0.180966
+accuracy 0.944600, loss 0.177505
+
+Finished at: 01:29:25 12/05/16 CET
+Running time: 220.888725 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 1e-07
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.315509
+accuracy 0.752100, loss 1.020588
+accuracy 0.824600, loss 0.611141
+accuracy 0.877800, loss 0.456877
+accuracy 0.887800, loss 0.394639
+accuracy 0.896900, loss 0.348450
+accuracy 0.908400, loss 0.317606
+accuracy 0.914200, loss 0.290977
+accuracy 0.911600, loss 0.284283
+accuracy 0.922800, loss 0.261045
+accuracy 0.926100, loss 0.240606
+accuracy 0.930200, loss 0.231414
+accuracy 0.933000, loss 0.224141
+accuracy 0.934500, loss 0.215233
+accuracy 0.934100, loss 0.212690
+accuracy 0.936700, loss 0.204011
+accuracy 0.940000, loss 0.194011
+accuracy 0.940200, loss 0.191070
+accuracy 0.941500, loss 0.183791
+accuracy 0.942400, loss 0.179695
+accuracy 0.945100, loss 0.177344
+
+Finished at: 01:39:28 12/05/16 CET
+Running time: 226.429772 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.01
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.135900, loss 2.290990
+accuracy 0.865600, loss 0.455832
+accuracy 0.899200, loss 0.334947
+accuracy 0.928500, loss 0.275891
+accuracy 0.937900, loss 0.223557
+accuracy 0.938600, loss 0.232006
+accuracy 0.938400, loss 0.231948
+accuracy 0.956400, loss 0.185238
+accuracy 0.950900, loss 0.202899
+accuracy 0.961800, loss 0.164437
+accuracy 0.958200, loss 0.174308
+accuracy 0.962800, loss 0.162604
+accuracy 0.967200, loss 0.156531
+accuracy 0.956200, loss 0.183376
+accuracy 0.967200, loss 0.156018
+accuracy 0.969000, loss 0.148692
+accuracy 0.968100, loss 0.153853
+accuracy 0.971900, loss 0.146622
+accuracy 0.963100, loss 0.168454
+accuracy 0.965400, loss 0.161729
+accuracy 0.970700, loss 0.152091
+
+Finished at: 01:40:41 12/05/16 CET
+Running time: 221.786159 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 01:41:53 12/05/16 CET
+Running time: 221.047233 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.0001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.093700, loss 2.328259
+accuracy 0.187600, loss 2.266089
+accuracy 0.459500, loss 2.192312
+accuracy 0.611200, loss 2.070625
+accuracy 0.668800, loss 1.898175
+accuracy 0.702600, loss 1.694909
+accuracy 0.718900, loss 1.486731
+accuracy 0.745900, loss 1.300618
+accuracy 0.764500, loss 1.154219
+accuracy 0.776000, loss 1.034190
+accuracy 0.785000, loss 0.942917
+accuracy 0.793900, loss 0.871245
+accuracy 0.802500, loss 0.812496
+accuracy 0.814700, loss 0.762322
+accuracy 0.819500, loss 0.723510
+accuracy 0.826700, loss 0.685534
+accuracy 0.835500, loss 0.654556
+accuracy 0.842200, loss 0.627401
+accuracy 0.848000, loss 0.603124
+accuracy 0.850300, loss 0.582898
+accuracy 0.854700, loss 0.563948
+
+Finished at: 01:43:06 12/05/16 CET
+Running time: 221.011830 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 1e-06
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.092600, loss 2.328802
+accuracy 0.093000, loss 2.328119
+accuracy 0.093400, loss 2.327464
+accuracy 0.094300, loss 2.326790
+accuracy 0.094800, loss 2.326101
+accuracy 0.095400, loss 2.325457
+accuracy 0.095800, loss 2.324788
+accuracy 0.096500, loss 2.324115
+accuracy 0.097300, loss 2.323444
+accuracy 0.097700, loss 2.322772
+accuracy 0.097800, loss 2.322123
+accuracy 0.098000, loss 2.321457
+accuracy 0.098100, loss 2.320797
+accuracy 0.099000, loss 2.320166
+accuracy 0.100000, loss 2.319528
+accuracy 0.100800, loss 2.318875
+accuracy 0.101900, loss 2.318244
+accuracy 0.102100, loss 2.317587
+accuracy 0.103300, loss 2.316941
+accuracy 0.103900, loss 2.316313
+accuracy 0.104000, loss 2.315666
+
+Finished at: 01:46:12 12/05/16 CET
+Running time: 623.605452 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 7
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.083800, loss 2.382733
+accuracy 0.848600, loss 0.722069
+accuracy 0.902500, loss 0.373208
+accuracy 0.928200, loss 0.269903
+accuracy 0.935900, loss 0.228320
+accuracy 0.938400, loss 0.210588
+accuracy 0.948000, loss 0.187210
+accuracy 0.954000, loss 0.167081
+accuracy 0.953800, loss 0.161382
+accuracy 0.955000, loss 0.154479
+accuracy 0.958800, loss 0.141676
+accuracy 0.958900, loss 0.138821
+accuracy 0.961600, loss 0.128923
+accuracy 0.962700, loss 0.126053
+accuracy 0.966000, loss 0.119263
+accuracy 0.965000, loss 0.119754
+accuracy 0.967700, loss 0.110991
+accuracy 0.969600, loss 0.109043
+accuracy 0.969700, loss 0.105937
+accuracy 0.968600, loss 0.107081
+accuracy 0.972000, loss 0.099362
+
+Finished at: 01:48:11 12/05/16 CET
+Running time: 382.940688 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 5
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.100300, loss 2.339246
+accuracy 0.823800, loss 0.787937
+accuracy 0.890300, loss 0.418881
+accuracy 0.920600, loss 0.300094
+accuracy 0.929200, loss 0.255552
+accuracy 0.936700, loss 0.220411
+accuracy 0.944200, loss 0.201676
+accuracy 0.949600, loss 0.180129
+accuracy 0.950100, loss 0.174284
+accuracy 0.955100, loss 0.158268
+accuracy 0.958100, loss 0.149065
+accuracy 0.958500, loss 0.149802
+accuracy 0.958900, loss 0.139322
+accuracy 0.961700, loss 0.133549
+accuracy 0.963200, loss 0.127681
+accuracy 0.962800, loss 0.131606
+accuracy 0.964300, loss 0.123098
+accuracy 0.966300, loss 0.118038
+accuracy 0.966600, loss 0.116827
+accuracy 0.968500, loss 0.109756
+accuracy 0.968900, loss 0.109224
+
+Finished at: 01:49:23 12/05/16 CET
+Running time: 221.368715 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 01:52:48 12/05/16 CET
+Running time: 731.961110 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 1
+accuracy 0.097900, loss 2.430032
+accuracy 0.880000, loss 0.508336
+accuracy 0.906200, loss 0.388315
+accuracy 0.925200, loss 0.322491
+accuracy 0.929400, loss 0.304788
+accuracy 0.930000, loss 0.290735
+accuracy 0.939400, loss 0.263879
+accuracy 0.945400, loss 0.246300
+accuracy 0.946300, loss 0.237868
+accuracy 0.951900, loss 0.220307
+accuracy 0.953400, loss 0.214614
+accuracy 0.954900, loss 0.211813
+accuracy 0.956800, loss 0.200379
+accuracy 0.956000, loss 0.197093
+accuracy 0.961800, loss 0.185668
+accuracy 0.960800, loss 0.191963
+accuracy 0.963900, loss 0.178019
+accuracy 0.965900, loss 0.172427
+accuracy 0.963900, loss 0.173831
+accuracy 0.965700, loss 0.169144
+accuracy 0.966800, loss 0.169224
+
+Finished at: 01:54:33 12/05/16 CET
+Running time: 343.571826 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 2
+accuracy 0.133500, loss 2.349766
+accuracy 0.847300, loss 0.601825
+accuracy 0.891200, loss 0.404917
+accuracy 0.914500, loss 0.333358
+accuracy 0.923100, loss 0.298501
+accuracy 0.925900, loss 0.271877
+accuracy 0.931200, loss 0.251836
+accuracy 0.935600, loss 0.237473
+accuracy 0.941700, loss 0.222234
+accuracy 0.946700, loss 0.207744
+accuracy 0.947900, loss 0.196078
+accuracy 0.950900, loss 0.195891
+accuracy 0.951000, loss 0.181829
+accuracy 0.952200, loss 0.175877
+accuracy 0.956700, loss 0.168394
+accuracy 0.957100, loss 0.163760
+accuracy 0.955500, loss 0.163498
+accuracy 0.959300, loss 0.155432
+accuracy 0.960500, loss 0.152894
+accuracy 0.962200, loss 0.145512
+accuracy 0.960600, loss 0.153520
+
+Finished at: 01:55:45 12/05/16 CET
+Running time: 221.432950 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 01:56:58 12/05/16 CET
+Running time: 221.408622 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.1
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.095400, loss 2.326667
+accuracy 0.634500, loss 1.938362
+accuracy 0.748900, loss 1.298693
+accuracy 0.811500, loss 0.957796
+accuracy 0.840500, loss 0.823311
+accuracy 0.850700, loss 0.693403
+accuracy 0.864500, loss 0.675493
+accuracy 0.868100, loss 0.627726
+accuracy 0.873100, loss 0.572192
+accuracy 0.884600, loss 0.545342
+accuracy 0.884700, loss 0.512557
+accuracy 0.890800, loss 0.502116
+accuracy 0.892200, loss 0.495184
+accuracy 0.894400, loss 0.468331
+accuracy 0.895100, loss 0.462441
+accuracy 0.899600, loss 0.454461
+accuracy 0.901800, loss 0.439084
+accuracy 0.902200, loss 0.419094
+accuracy 0.909300, loss 0.429878
+accuracy 0.912100, loss 0.410827
+accuracy 0.909500, loss 0.403403
+
+Finished at: 01:58:11 12/05/16 CET
+Running time: 221.830130 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.25
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.093700, loss 2.325334
+accuracy 0.723700, loss 1.353544
+accuracy 0.802800, loss 0.793001
+accuracy 0.862700, loss 0.577257
+accuracy 0.872300, loss 0.516593
+accuracy 0.882100, loss 0.443749
+accuracy 0.894900, loss 0.410581
+accuracy 0.899400, loss 0.380883
+accuracy 0.900800, loss 0.358723
+accuracy 0.909400, loss 0.334386
+accuracy 0.913700, loss 0.312403
+accuracy 0.918200, loss 0.308517
+accuracy 0.918700, loss 0.292263
+accuracy 0.920700, loss 0.283936
+accuracy 0.920400, loss 0.281365
+accuracy 0.924600, loss 0.273411
+accuracy 0.929800, loss 0.261670
+accuracy 0.924700, loss 0.256730
+accuracy 0.928800, loss 0.252938
+accuracy 0.933500, loss 0.242424
+accuracy 0.934500, loss 0.243344
+
+Finished at: 01:59:23 12/05/16 CET
+Running time: 220.925779 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.5
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098900, loss 2.323447
+accuracy 0.751500, loss 1.030174
+accuracy 0.824900, loss 0.621231
+accuracy 0.877800, loss 0.467693
+accuracy 0.888600, loss 0.405994
+accuracy 0.896800, loss 0.361086
+accuracy 0.909000, loss 0.328466
+accuracy 0.914400, loss 0.302915
+accuracy 0.912400, loss 0.297258
+accuracy 0.921700, loss 0.274636
+accuracy 0.927400, loss 0.254932
+accuracy 0.931100, loss 0.245354
+accuracy 0.933100, loss 0.237233
+accuracy 0.936200, loss 0.227984
+accuracy 0.934200, loss 0.227218
+accuracy 0.937000, loss 0.218106
+accuracy 0.940400, loss 0.208205
+accuracy 0.940400, loss 0.204500
+accuracy 0.942800, loss 0.197755
+accuracy 0.942300, loss 0.195393
+accuracy 0.945500, loss 0.192037
+
+Finished at: 02:00:35 12/05/16 CET
+Running time: 221.632741 seconds
+Arguments:num_hidden 100
+num_kernels1 4
+learning_rate 0.001
+regularization_factor 0.0001
+batch_size 64
+dropout_keep_probability 0.9
+seed 666
+kernel1_size 3
+test_interval 100
+num_batches 2001
+pool 4
+accuracy 0.098600, loss 2.321866
+accuracy 0.769500, loss 0.862302
+accuracy 0.847200, loss 0.535035
+accuracy 0.887500, loss 0.415731
+accuracy 0.891400, loss 0.378527
+accuracy 0.900200, loss 0.352045
+accuracy 0.917000, loss 0.299432
+accuracy 0.917400, loss 0.282498
+accuracy 0.919300, loss 0.274725
+accuracy 0.928800, loss 0.248537
+accuracy 0.934700, loss 0.231697
+accuracy 0.936500, loss 0.224624
+accuracy 0.937700, loss 0.216597
+accuracy 0.941400, loss 0.206484
+accuracy 0.940800, loss 0.205913
+accuracy 0.944800, loss 0.197556
+accuracy 0.945200, loss 0.191489
+accuracy 0.946700, loss 0.181917
+accuracy 0.945500, loss 0.186420
+accuracy 0.949300, loss 0.172453
+accuracy 0.950300, loss 0.173728
+

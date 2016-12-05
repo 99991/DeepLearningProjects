@@ -21,7 +21,7 @@ delta_time = time.clock() - start_time
 with open('output.txt', 'a') as f:
     f.write("Finished at: %s\n"%time.strftime("%X %x %Z"))
     f.write("Running time: %f seconds\n"%delta_time)
-    f.write("Arguments:")
+    f.write("Arguments:\n")
     f.write("\n".join("%s %s"%kv for kv in zip(keys, vals)))
     f.write("\n")
     for accuracy, loss in zip(accuracies, losses):

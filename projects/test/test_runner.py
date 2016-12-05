@@ -12,7 +12,7 @@ default_args = {
 	"learning_rate":           0.001,
 	"kernel1_size":                3,
 	"test_interval":             100,
-	"num_batches":               1,
+	"num_batches":              6001,
 	"seed":                      666,
         "pool":                        4,
 }
@@ -22,7 +22,7 @@ test_values = {
     "num_kernels1":            [32, 16, 8, 4, 2, 1],
     "num_hidden":              [2048, 1024, 512, 256, 128, 64, 32, 16],
     "regularization_factor":   [10, 1, 0, 1, 1e-2, 1e-3, 1e-4, 1e-6, 1e-7],
-    "dropout_keep_probability":[0.0, 0.1, 0.25, 0.5, 0.9, 0.99],
+    "dropout_keep_probability":[0.1, 0.25, 0.5, 0.9],
     "learning_rate":           [1e-2, 1e-3, 1e-4, 1e-6],
     "kernel1_size":            [7, 5, 3],
     "pool":                    [1, 2, 4],

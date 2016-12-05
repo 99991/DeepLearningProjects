@@ -1,0 +1,546 @@
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.01 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.01)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.135900, loss 2.290990
+batch   100, accuracy 0.865600, loss 0.455832
+batch   200, accuracy 0.899200, loss 0.334947
+batch   300, accuracy 0.928500, loss 0.275891
+batch   400, accuracy 0.937900, loss 0.223557
+batch   500, accuracy 0.938600, loss 0.232006
+batch   600, accuracy 0.938400, loss 0.231948
+batch   700, accuracy 0.956400, loss 0.185238
+batch   800, accuracy 0.950900, loss 0.202899
+batch   900, accuracy 0.961800, loss 0.164437
+batch  1000, accuracy 0.958200, loss 0.174308
+batch  1100, accuracy 0.962800, loss 0.162604
+batch  1200, accuracy 0.967200, loss 0.156531
+batch  1300, accuracy 0.956200, loss 0.183376
+batch  1400, accuracy 0.967200, loss 0.156018
+batch  1500, accuracy 0.969000, loss 0.148692
+batch  1600, accuracy 0.968100, loss 0.153853
+batch  1700, accuracy 0.971900, loss 0.146622
+batch  1800, accuracy 0.963100, loss 0.168454
+batch  1900, accuracy 0.965400, loss 0.161729
+batch  2000, accuracy 0.970700, loss 0.152091
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.098900, loss 2.323447
+batch   100, accuracy 0.751500, loss 1.030174
+batch   200, accuracy 0.824900, loss 0.621231
+batch   300, accuracy 0.877800, loss 0.467693
+batch   400, accuracy 0.888600, loss 0.405994
+batch   500, accuracy 0.896800, loss 0.361086
+batch   600, accuracy 0.909000, loss 0.328466
+batch   700, accuracy 0.914400, loss 0.302915
+batch   800, accuracy 0.912400, loss 0.297258
+batch   900, accuracy 0.921700, loss 0.274636
+batch  1000, accuracy 0.927400, loss 0.254932
+batch  1100, accuracy 0.931100, loss 0.245354
+batch  1200, accuracy 0.933100, loss 0.237233
+batch  1300, accuracy 0.936200, loss 0.227984
+batch  1400, accuracy 0.934200, loss 0.227218
+batch  1500, accuracy 0.937000, loss 0.218106
+batch  1600, accuracy 0.940400, loss 0.208205
+batch  1700, accuracy 0.940400, loss 0.204500
+batch  1800, accuracy 0.942800, loss 0.197755
+batch  1900, accuracy 0.942300, loss 0.195393
+batch  2000, accuracy 0.945500, loss 0.192037
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.0001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.0001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.093700, loss 2.328259
+batch   100, accuracy 0.187600, loss 2.266089
+batch   200, accuracy 0.459500, loss 2.192312
+batch   300, accuracy 0.611200, loss 2.070625
+batch   400, accuracy 0.668800, loss 1.898175
+batch   500, accuracy 0.702600, loss 1.694909
+batch   600, accuracy 0.718900, loss 1.486731
+batch   700, accuracy 0.745900, loss 1.300618
+batch   800, accuracy 0.764500, loss 1.154219
+batch   900, accuracy 0.776000, loss 1.034190
+batch  1000, accuracy 0.785000, loss 0.942917
+batch  1100, accuracy 0.793900, loss 0.871245
+batch  1200, accuracy 0.802500, loss 0.812496
+batch  1300, accuracy 0.814700, loss 0.762322
+batch  1400, accuracy 0.819500, loss 0.723510
+batch  1500, accuracy 0.826700, loss 0.685534
+batch  1600, accuracy 0.835500, loss 0.654556
+batch  1700, accuracy 0.842200, loss 0.627401
+batch  1800, accuracy 0.848000, loss 0.603124
+batch  1900, accuracy 0.850300, loss 0.582898
+batch  2000, accuracy 0.854700, loss 0.563948
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 1e-06 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 1e-06)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.092600, loss 2.328802
+batch   100, accuracy 0.093000, loss 2.328119
+batch   200, accuracy 0.093400, loss 2.327464
+batch   300, accuracy 0.094300, loss 2.326790
+batch   400, accuracy 0.094800, loss 2.326101
+batch   500, accuracy 0.095400, loss 2.325457
+batch   600, accuracy 0.095800, loss 2.324788
+batch   700, accuracy 0.096500, loss 2.324115
+batch   800, accuracy 0.097300, loss 2.323444
+batch   900, accuracy 0.097700, loss 2.322772
+batch  1000, accuracy 0.097800, loss 2.322123
+batch  1100, accuracy 0.098000, loss 2.321457
+batch  1200, accuracy 0.098100, loss 2.320797
+batch  1300, accuracy 0.099000, loss 2.320166
+batch  1400, accuracy 0.100000, loss 2.319528
+batch  1500, accuracy 0.100800, loss 2.318875
+batch  1600, accuracy 0.101900, loss 2.318244
+batch  1700, accuracy 0.102100, loss 2.317587
+batch  1800, accuracy 0.103300, loss 2.316941
+batch  1900, accuracy 0.103900, loss 2.316313
+batch  2000, accuracy 0.104000, loss 2.315666
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 7 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 7)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.083800, loss 2.382733
+batch   100, accuracy 0.848600, loss 0.722069
+batch   200, accuracy 0.902500, loss 0.373208
+batch   300, accuracy 0.928200, loss 0.269903
+batch   400, accuracy 0.935900, loss 0.228320
+batch   500, accuracy 0.938400, loss 0.210588
+batch   600, accuracy 0.948000, loss 0.187210
+batch   700, accuracy 0.954000, loss 0.167081
+batch   800, accuracy 0.953800, loss 0.161382
+batch   900, accuracy 0.955000, loss 0.154479
+batch  1000, accuracy 0.958800, loss 0.141676
+batch  1100, accuracy 0.958900, loss 0.138821
+batch  1200, accuracy 0.961600, loss 0.128923
+batch  1300, accuracy 0.962700, loss 0.126053
+batch  1400, accuracy 0.966000, loss 0.119263
+batch  1500, accuracy 0.965000, loss 0.119754
+batch  1600, accuracy 0.967700, loss 0.110991
+batch  1700, accuracy 0.969600, loss 0.109043
+batch  1800, accuracy 0.969700, loss 0.105937
+batch  1900, accuracy 0.968600, loss 0.107081
+batch  2000, accuracy 0.972000, loss 0.099362
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 5 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 5)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.100300, loss 2.339246
+batch   100, accuracy 0.823800, loss 0.787937
+batch   200, accuracy 0.890300, loss 0.418881
+batch   300, accuracy 0.920600, loss 0.300094
+batch   400, accuracy 0.929200, loss 0.255552
+batch   500, accuracy 0.936700, loss 0.220411
+batch   600, accuracy 0.944200, loss 0.201676
+batch   700, accuracy 0.949600, loss 0.180129
+batch   800, accuracy 0.950100, loss 0.174284
+batch   900, accuracy 0.955100, loss 0.158268
+batch  1000, accuracy 0.958100, loss 0.149065
+batch  1100, accuracy 0.958500, loss 0.149802
+batch  1200, accuracy 0.958900, loss 0.139322
+batch  1300, accuracy 0.961700, loss 0.133549
+batch  1400, accuracy 0.963200, loss 0.127681
+batch  1500, accuracy 0.962800, loss 0.131606
+batch  1600, accuracy 0.964300, loss 0.123098
+batch  1700, accuracy 0.966300, loss 0.118038
+batch  1800, accuracy 0.966600, loss 0.116827
+batch  1900, accuracy 0.968500, loss 0.109756
+batch  2000, accuracy 0.968900, loss 0.109224
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.098900, loss 2.323447
+batch   100, accuracy 0.751500, loss 1.030174
+batch   200, accuracy 0.824900, loss 0.621231
+batch   300, accuracy 0.877800, loss 0.467693
+batch   400, accuracy 0.888600, loss 0.405994
+batch   500, accuracy 0.896800, loss 0.361086
+batch   600, accuracy 0.909000, loss 0.328466
+batch   700, accuracy 0.914400, loss 0.302915
+batch   800, accuracy 0.912400, loss 0.297258
+batch   900, accuracy 0.921700, loss 0.274636
+batch  1000, accuracy 0.927400, loss 0.254932
+batch  1100, accuracy 0.931100, loss 0.245354
+batch  1200, accuracy 0.933100, loss 0.237233
+batch  1300, accuracy 0.936200, loss 0.227984
+batch  1400, accuracy 0.934200, loss 0.227218
+batch  1500, accuracy 0.937000, loss 0.218106
+batch  1600, accuracy 0.940400, loss 0.208205
+batch  1700, accuracy 0.940400, loss 0.204500
+batch  1800, accuracy 0.942800, loss 0.197755
+batch  1900, accuracy 0.942300, loss 0.195393
+batch  2000, accuracy 0.945500, loss 0.192037
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 1
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 1)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.097900, loss 2.430032
+batch   100, accuracy 0.880000, loss 0.508336
+batch   200, accuracy 0.906200, loss 0.388315
+batch   300, accuracy 0.925200, loss 0.322491
+batch   400, accuracy 0.929400, loss 0.304788
+batch   500, accuracy 0.930000, loss 0.290735
+batch   600, accuracy 0.939400, loss 0.263879
+batch   700, accuracy 0.945400, loss 0.246300
+batch   800, accuracy 0.946300, loss 0.237868
+batch   900, accuracy 0.951900, loss 0.220307
+batch  1000, accuracy 0.953400, loss 0.214614
+batch  1100, accuracy 0.954900, loss 0.211813
+batch  1200, accuracy 0.956800, loss 0.200379
+batch  1300, accuracy 0.956000, loss 0.197093
+batch  1400, accuracy 0.961800, loss 0.185668
+batch  1500, accuracy 0.960800, loss 0.191963
+batch  1600, accuracy 0.963900, loss 0.178019
+batch  1700, accuracy 0.965900, loss 0.172427
+batch  1800, accuracy 0.963900, loss 0.173831
+batch  1900, accuracy 0.965700, loss 0.169144
+batch  2000, accuracy 0.966800, loss 0.169224
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 2
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 2)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.133500, loss 2.349766
+batch   100, accuracy 0.847300, loss 0.601825
+batch   200, accuracy 0.891200, loss 0.404917
+batch   300, accuracy 0.914500, loss 0.333358
+batch   400, accuracy 0.923100, loss 0.298501
+batch   500, accuracy 0.925900, loss 0.271877
+batch   600, accuracy 0.931200, loss 0.251836
+batch   700, accuracy 0.935600, loss 0.237473
+batch   800, accuracy 0.941700, loss 0.222234
+batch   900, accuracy 0.946700, loss 0.207744
+batch  1000, accuracy 0.947900, loss 0.196078
+batch  1100, accuracy 0.950900, loss 0.195891
+batch  1200, accuracy 0.951000, loss 0.181829
+batch  1300, accuracy 0.952200, loss 0.175877
+batch  1400, accuracy 0.956700, loss 0.168394
+batch  1500, accuracy 0.957100, loss 0.163760
+batch  1600, accuracy 0.955500, loss 0.163498
+batch  1700, accuracy 0.959300, loss 0.155432
+batch  1800, accuracy 0.960500, loss 0.152894
+batch  1900, accuracy 0.962200, loss 0.145512
+batch  2000, accuracy 0.960600, loss 0.153520
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.098900, loss 2.323447
+batch   100, accuracy 0.751500, loss 1.030174
+batch   200, accuracy 0.824900, loss 0.621231
+batch   300, accuracy 0.877800, loss 0.467693
+batch   400, accuracy 0.888600, loss 0.405994
+batch   500, accuracy 0.896800, loss 0.361086
+batch   600, accuracy 0.909000, loss 0.328466
+batch   700, accuracy 0.914400, loss 0.302915
+batch   800, accuracy 0.912400, loss 0.297258
+batch   900, accuracy 0.921700, loss 0.274636
+batch  1000, accuracy 0.927400, loss 0.254932
+batch  1100, accuracy 0.931100, loss 0.245354
+batch  1200, accuracy 0.933100, loss 0.237233
+batch  1300, accuracy 0.936200, loss 0.227984
+batch  1400, accuracy 0.934200, loss 0.227218
+batch  1500, accuracy 0.937000, loss 0.218106
+batch  1600, accuracy 0.940400, loss 0.208205
+batch  1700, accuracy 0.940400, loss 0.204500
+batch  1800, accuracy 0.942800, loss 0.197755
+batch  1900, accuracy 0.942300, loss 0.195393
+batch  2000, accuracy 0.945500, loss 0.192037
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.1 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.1)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.095400, loss 2.326667
+batch   100, accuracy 0.634500, loss 1.938362
+batch   200, accuracy 0.748900, loss 1.298693
+batch   300, accuracy 0.811500, loss 0.957796
+batch   400, accuracy 0.840500, loss 0.823311
+batch   500, accuracy 0.850700, loss 0.693403
+batch   600, accuracy 0.864500, loss 0.675493
+batch   700, accuracy 0.868100, loss 0.627726
+batch   800, accuracy 0.873100, loss 0.572192
+batch   900, accuracy 0.884600, loss 0.545342
+batch  1000, accuracy 0.884700, loss 0.512557
+batch  1100, accuracy 0.890800, loss 0.502116
+batch  1200, accuracy 0.892200, loss 0.495184
+batch  1300, accuracy 0.894400, loss 0.468331
+batch  1400, accuracy 0.895100, loss 0.462441
+batch  1500, accuracy 0.899600, loss 0.454461
+batch  1600, accuracy 0.901800, loss 0.439084
+batch  1700, accuracy 0.902200, loss 0.419094
+batch  1800, accuracy 0.909300, loss 0.429878
+batch  1900, accuracy 0.912100, loss 0.410827
+batch  2000, accuracy 0.909500, loss 0.403403
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.25 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.25)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.093700, loss 2.325334
+batch   100, accuracy 0.723700, loss 1.353544
+batch   200, accuracy 0.802800, loss 0.793001
+batch   300, accuracy 0.862700, loss 0.577257
+batch   400, accuracy 0.872300, loss 0.516593
+batch   500, accuracy 0.882100, loss 0.443749
+batch   600, accuracy 0.894900, loss 0.410581
+batch   700, accuracy 0.899400, loss 0.380883
+batch   800, accuracy 0.900800, loss 0.358723
+batch   900, accuracy 0.909400, loss 0.334386
+batch  1000, accuracy 0.913700, loss 0.312403
+batch  1100, accuracy 0.918200, loss 0.308517
+batch  1200, accuracy 0.918700, loss 0.292263
+batch  1300, accuracy 0.920700, loss 0.283936
+batch  1400, accuracy 0.920400, loss 0.281365
+batch  1500, accuracy 0.924600, loss 0.273411
+batch  1600, accuracy 0.929800, loss 0.261670
+batch  1700, accuracy 0.924700, loss 0.256730
+batch  1800, accuracy 0.928800, loss 0.252938
+batch  1900, accuracy 0.933500, loss 0.242424
+batch  2000, accuracy 0.934500, loss 0.243344
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.5 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.5)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.098900, loss 2.323447
+batch   100, accuracy 0.751500, loss 1.030174
+batch   200, accuracy 0.824900, loss 0.621231
+batch   300, accuracy 0.877800, loss 0.467693
+batch   400, accuracy 0.888600, loss 0.405994
+batch   500, accuracy 0.896800, loss 0.361086
+batch   600, accuracy 0.909000, loss 0.328466
+batch   700, accuracy 0.914400, loss 0.302915
+batch   800, accuracy 0.912400, loss 0.297258
+batch   900, accuracy 0.921700, loss 0.274636
+batch  1000, accuracy 0.927400, loss 0.254932
+batch  1100, accuracy 0.931100, loss 0.245354
+batch  1200, accuracy 0.933100, loss 0.237233
+batch  1300, accuracy 0.936200, loss 0.227984
+batch  1400, accuracy 0.934200, loss 0.227218
+batch  1500, accuracy 0.937000, loss 0.218106
+batch  1600, accuracy 0.940400, loss 0.208205
+batch  1700, accuracy 0.940400, loss 0.204500
+batch  1800, accuracy 0.942800, loss 0.197755
+batch  1900, accuracy 0.942300, loss 0.195393
+batch  2000, accuracy 0.945500, loss 0.192037
+
+python test.py num_hidden 100 num_kernels1 4 learning_rate 0.001 regularization_factor 0.0001 batch_size 64 dropout_keep_probability 0.9 seed 666 kernel1_size 3 test_interval 100 num_batches 2001 pool 4
+Arguments:
+('num_hidden', 100)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 64)
+('dropout_keep_probability', 0.9)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+Extracting ../../mnist/train-images-idx3-ubyte.gz
+Extracting ../../mnist/train-labels-idx1-ubyte.gz
+Extracting ../../mnist/t10k-images-idx3-ubyte.gz
+Extracting ../../mnist/t10k-labels-idx1-ubyte.gz
+batch     0, accuracy 0.098600, loss 2.321866
+batch   100, accuracy 0.769500, loss 0.862302
+batch   200, accuracy 0.847200, loss 0.535035
+batch   300, accuracy 0.887500, loss 0.415731
+batch   400, accuracy 0.891400, loss 0.378527
+batch   500, accuracy 0.900200, loss 0.352045
+batch   600, accuracy 0.917000, loss 0.299432
+batch   700, accuracy 0.917400, loss 0.282498
+batch   800, accuracy 0.919300, loss 0.274725
+batch   900, accuracy 0.928800, loss 0.248537
+batch  1000, accuracy 0.934700, loss 0.231697
+batch  1100, accuracy 0.936500, loss 0.224624
+batch  1200, accuracy 0.937700, loss 0.216597
+batch  1300, accuracy 0.941400, loss 0.206484
+batch  1400, accuracy 0.940800, loss 0.205913
+batch  1500, accuracy 0.944800, loss 0.197556
+batch  1600, accuracy 0.945200, loss 0.191489
+batch  1700, accuracy 0.946700, loss 0.181917
+batch  1800, accuracy 0.945500, loss 0.186420
+batch  1900, accuracy 0.949300, loss 0.172453
+batch  2000, accuracy 0.950300, loss 0.173728
+

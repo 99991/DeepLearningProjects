@@ -1,0 +1,55 @@
+1)
+code be coded
+
+2)
+comments be made
+
+3)
+plots be plotted
+
+4)
+not at gpu (threads end different all times)
+cpu same, if seed is set
+
+5)
+runtimes in data, most (very good) runs about 3 minutes
+
+6)
+
+
+7)
+see figures
+
+8)
+see plots
+
+9)
+kleinste Konfiguration => 97,4%
+('num_hidden', 64)
+('num_kernels1', 4)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 2048)
+('dropout_keep_probability', 0.25)
+('seed', 666)
+('kernel1_size', 3)
+('test_interval', 100)
+('num_batches', 20001)
+('pool', 4)
+
+kleine Konfiguration => 99%
+('num_hidden', 512)
+('num_kernels1', 16)
+('learning_rate', 0.001)
+('regularization_factor', 0.0001)
+('batch_size', 512)
+('dropout_keep_probability', 0.25)
+('seed', 666)
+('kernel1_size', 5)
+('test_interval', 100)
+('num_batches', 2001)
+('pool', 4)
+
+10)
+Pooling < 4 actually decreases accuracy while increasing runtime
+Pooling > 4 decreases accuracy while decreasing runtime

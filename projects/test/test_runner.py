@@ -4,28 +4,21 @@ import copy
 import subprocess
 
 default_args = {
-	"batch_size":               1024,
-	"num_kernels1":               16,
-	"num_hidden":               1024,
+	"batch_size":               2048,
+	"num_kernels1":                4,
+	"num_hidden":                 64,
 	"regularization_factor":    1e-4,
-	"dropout_keep_probability":  0.5,
+	"dropout_keep_probability": 0.25,
 	"learning_rate":           0.001,
-	"kernel1_size":                5,
+	"kernel1_size":                3,
 	"test_interval":             100,
-	"num_batches":             10001,
+	"num_batches":             20001,
 	"seed":                      666,
     "pool":                        4,
 }
 
 test_values = {
-    "batch_size":              [2048, 1024, 512, 256, 128, 64, 32, 16],
-    "num_kernels1":            [64, 32, 16, 8, 4, 2, 1],
-    "num_hidden":              [4096, 2048, 1024, 512, 256, 128, 64, 32, 16],
-    #"regularization_factor":   [10, 1, 0, 1, 1e-2, 1e-3, 1e-4, 1e-6, 1e-7],
-    "dropout_keep_probability":[0.1, 0.25, 0.5, 0.9],
-    "learning_rate":           [1e-2, 1e-3, 1e-4, 1e-6],
-    "kernel1_size":            [11, 9, 7, 5, 3],
-    "pool":                    [1, 2, 4],
+    "kernel1_size":                    [3]
 }
 
 # for each configurable parameter

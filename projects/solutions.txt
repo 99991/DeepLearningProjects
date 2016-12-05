@@ -1,8 +1,14 @@
 1)
 code be coded
+insert network.pdf here
+why did we choose this?
+TODO
 
 2)
 comments be made
+reduce loss defined by softmax_cross_entropy_with_logits
+tried: MomentumOptimizer, GradientDescentOptimizer
+AdamOptimizer converged faster and to higher accuracy
 
 3)
 plots be plotted
@@ -10,15 +16,22 @@ plots be plotted
 4)
 not at gpu (threads end different all times)
 cpu same, if seed is set
+mnist loader randomizes batches
+can be seeded with np.random.seed(seed)
+dropout layer and truncated_normal weight initialization have seed parameter
 
 5)
 runtimes in data, most (very good) runs about 3 minutes
 
 6)
-
+learning_rate.pdf
+super high learning rate: does not learn at all (not on plot)
+very small learning rate: takes forever to converge
+high learning rate: maximum accuracy not reached
 
 7)
 see figures
+99_43.pdf
 
 8)
 see plots

@@ -52,6 +52,9 @@ for key, values in test_values.items():
         # change one value
         args[key] = value
 
+        if key == 'learning_rate' and value == 1e-6:
+            continue
+
         data = find_data_with_args(args)
         accuracies = data['accuracies']
         accuracies = data['accuracies'][5:]

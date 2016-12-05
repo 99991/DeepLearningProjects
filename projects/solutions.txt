@@ -2,7 +2,7 @@
 code be coded
 insert network.pdf here
 why did we choose this?
-TODO
+we tried more conv layers and more hidden layers with no gain in accuracy
 
 2)
 comments be made

@@ -1,5 +1,6 @@
 from nn import run_nn
 import sys, time
+import json
 
 def to_numeric(s):
     try:
@@ -19,12 +20,15 @@ accuracies, losses, _ = run_nn(**args)
 delta_time = time.clock() - start_time
 
 with open('output.txt', 'a') as f:
-    f.write("Finished at: %s\n"%time.strftime("%X %x %Z"))
-    f.write("Running time: %f seconds\n"%delta_time)
-    f.write("Arguments:\n")
-    f.write("\n".join("%s %s"%kv for kv in zip(keys, vals)))
-    f.write("\n")
-    for accuracy, loss in zip(accuracies, losses):
-        f.write("accuracy %f, loss %f\n"%(accuracy, loss))
+    data = {
+        "date":time.strftime("%X %x %Z"),
+        "running_time":delta_time,
+        "arguments":args,
+        "accuracies":accuracies,
+        "losses":losses,
+    }
+    s = str(data)
+    print(s)
+    f.write(s)
     f.write("\n")
 

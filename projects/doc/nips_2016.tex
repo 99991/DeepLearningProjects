@@ -85,11 +85,13 @@ Figure~\ref{fig:network} describes the architecture of our CNN. We chose a small
 The CNN was trained with standard parameters using softmax regression (\code{tf.nn.softmax\_cross\_entropy\_with\_logits}). This method applies a softmax nonlinearity to the output of the network and calculates the cross-entropy between the normalized predictions and a 1-hot encoding of the label. Various Optimizers were tested, with the Adam-Optimizer converging faster and to a higher accuracy compared to Momentum-Optimizer and Gradient-Descent-Optimizer.
 
 \subsection{3}
+Please see 8.
 
 \subsection{4}
 No. While running solely on a CPU, setting the seed parameter for otherwise randomized initializations will give the same result for each run. The MNIST loader, which randomizes the batches per default, can be seeded via \code{np.random.seed}, while \code{tf.truncated\_normal} and \code{tf.nn.dropout} offer seed parameters. These efforts are of course futile while running on a GPU, since the high degree of multithreaded calculations will result in non-deterministic behaviour. 
 
 \subsection{5}
+For the evolution of accuracy with respect to the number of iterations, see 8. Training time on one million samples varied between 132 and 723 seconds on a GeForce GTX 1070, depending on the selection of the parameters.
 
 \subsection{6}
 Choosing a sensible learning rate is imperative. While a very small learning rate might take a long time to converge, a high learning rate might not reach the maximum accuracy at all. As seen in figure~\ref{fig:learning_rate}, choosing a rate of 0.001 is preferable to both 0.01 and 0.0001.

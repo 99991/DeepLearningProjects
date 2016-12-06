@@ -159,7 +159,30 @@ Table \ref{smallest_conf} shows two acceptable but small configurations.
  	\end{tabular}
  \end{table}
 
-
+\subsection{10}
+Table \ref{pooling_comparison} shows different pooling kernel sizes.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/pool_cpu}
+	\caption{The network}
+	\label{fig:pooling_cpu}
+\end{figure}
+\begin{table}[t]
+	\caption{pooling kernel size comparison}
+	\label{pooling_comparison}
+	\centering
+	\begin{tabular}{lll}
+		\toprule
+		Pooling Kernel Size     & Seconds & Accuracy \\
+		\midrule
+		1 & 261.9 & 0.8438 \\
+		2 & 255.7 & 0.8668 \\
+		4 & 214.0 & 0.7905 \\
+		7 & 211.8 & 0.7401 \\
+		14 & 209.5 & 0.454 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
 \section{Code and Architecture}
 

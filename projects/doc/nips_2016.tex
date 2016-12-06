@@ -73,6 +73,13 @@
 
 \section{Questions}
 \subsection{1}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/network}
+	\caption{The network}
+	\label{fig:network}
+\end{figure}
+Figure~\ref{fig:network} describes the architecture of our CNN. We chose a small and therefore fast to train network, while still achieving high accuracy. We also tried larger networks through adding another conv-relu-pool layer and more hidden layers, with no improvement in accuracy but an increase in training time. The ReLu activation function was chosen because it performed better than tanh activation function.
 
 \subsection{2}
 The CNN was trained with standard parameters using softmax regression (\code{tf.nn.softmax\_cross\_entropy\_with\_logits}). This method applies a softmax nonlinearity to the output of the network and calculates the cross-entropy between the normalized predictions and a 1-hot encoding of the label. Various Optimizers were tested, with the Adam-Optimizer converging faster and to a higher accuracy compared to Momentum-Optimizer and Gradient-Descent-Optimizer.
@@ -123,6 +130,32 @@ The dropout keep probability shows the best results for a value of 0.25.
 	\label{fig:parameters}
 \end{figure}
 
+\subsection{9}
+Table \ref{smallest_conf} shows two acceptable but small configurations.
+ \begin{table}[t]
+ 	\caption{Configurations}
+ 	\label{smallest_conf}
+ 	\centering
+ 	\begin{tabular}{lll}
+ 		\toprule
+ 		Parameter     & Accuracy 97.4\%     & Accuracy 99\% \\
+ 		\midrule
+ 		num\_hidden & 64 & 512 \\
+ 		num\_kernels1 & 4 & 16 \\
+ 		learning\_rate & 0.001 & 0.001 \\
+ 		regularization\_factor & 0.0001 & 0.0001 \\
+ 		batch\_size & 2048 & 512 \\
+ 		dropout\_keep\_probability & 0.25 & 0.25 \\
+ 		seed & 666 & 666 \\
+ 		kernel1\_size & 3 & 5 \\
+ 		test\_interval & 100 & 100 \\
+ 		num\_batches & 20001 & 2001 \\
+ 		pool & 4 & 4 \\
+ 		
+ 		
+ 		\bottomrule
+ 	\end{tabular}
+ \end{table}
 
 
 

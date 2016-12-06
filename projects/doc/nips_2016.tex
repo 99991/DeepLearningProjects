@@ -20,6 +20,9 @@
 \usepackage{amsfonts}       % blackboard math symbols
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
+\usepackage{graphicx}
+
+\def\code#1{\texttt{#1}}
 
 \title{Formatting instructions for NIPS 2016}
 
@@ -67,6 +70,61 @@
 \begin{abstract}
   Ganz tolles Abstract
 \end{abstract}
+
+\section{Questions}
+\subsection{1}
+
+\subsection{2}
+The CNN was trained with standard parameters using softmax regression (\code{tf.nn.softmax\_cross\_entropy\_with\_logits}). This method applies a softmax nonlinearity to the output of the network and calculates the cross-entropy between the normalized predictions and a 1-hot encoding of the label. Various Optimizers were tested, with the Adam-Optimizer converging faster and to a higher accuracy compared to Momentum-Optimizer and Gradient-Descent-Optimizer.
+
+\subsection{3}
+
+\subsection{4}
+No. While running solely on a CPU, setting the seed parameter for otherwise randomized initializations will give the same result for each run. The MNIST loader, which randomizes the batches per default, can be seeded via \code{np.random.seed}, while \code{tf.truncated\_normal} and \code{tf.nn.dropout} offer seed parameters. These efforts are of course futile while running on a GPU, since the high degree of multithreaded calculations will result in non-deterministic behaviour. 
+
+\subsection{5}
+
+\subsection{6}
+Choosing a sensible learning rate is imperative. While a very small learning rate might take a long time to converge, a high learning rate might not reach the maximum accuracy at all. As seen in figure~\ref{fig:learning_rate}, choosing a rate of 0.001 is preferable to both 0.01 and 0.0001.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/learning_rate}
+	\caption{learning rate}
+	\label{fig:learning_rate}
+\end{figure}
+
+\subsection{7} 
+A CNN basically trains a feature extractor which is then used to classify any given data, preferably of the same type as the training data, in our case images. Figure~\ref{fig:vis_cnn} shows a visualization of these features.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/99_43}
+	\caption{visualization of CNN learning}
+	\label{fig:vis_cnn}
+\end{figure}
+
+\subsection{8} 
+
+Figure~\ref{fig:parameters} details the accuracy in respect to various parameter changes. For the batch size and the number of kernels, a higher value results in better accuracy. While this is also the case for the kernel size, the calculation is more costly. The calculation time needed for a kernel size of 5 doubles the kernel size of 3. For the pooling, the best results are achieved with a value of 4. This seems to be the maximum, though, since additional tests have shown that an even higher value of 7 or even 14 have a much lower rated result.
+The dropout keep probability shows the best results for a value of 0.25. 
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.3\textwidth]{figures/dropout_keep_probability}
+	\includegraphics[width=0.3\textwidth]{figures/batch_size}
+	\includegraphics[width=0.3\textwidth]{figures/kernel1_size}
+	\includegraphics[width=0.3\textwidth]{figures/num_kernels1}
+	\includegraphics[width=0.3\textwidth]{figures/num_hidden}
+	\includegraphics[width=0.3\textwidth]{figures/pool}
+	\caption{parameter comparison}
+	\label{fig:parameters}
+\end{figure}
+
+
+
 
 \section{Code and Architecture}
 

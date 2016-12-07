@@ -94,14 +94,14 @@ To test various neural network configurations, run
 \end{figure}
 \begin{enumerate}
 	\begin{item}
-		Figure~\ref{fig:network} describes the architecture of our CNN. We chose a small and therefore fast to train network, while still achieving high accuracy. We also tried larger networks through adding another conv-relu-pool layer and more hidden layers, with no improvement in accuracy but an increase in training time. The ReLu activation function was chosen because it performed better than tanh activation function.
+		Figure~\ref{fig:network} describes the architecture of our CNN. We chose a small and therefore fast to train network, while still achieving high accuracy. We also tried larger networks through adding another conv-relu-pool layer and more hidden layers, with no improvement in accuracy but an increase in training time. The ReLu activation function was chosen because it performed better than the tanh activation function.
 	\end{item}
 	\begin{item}
 		The CNN was trained with standard parameters using softmax regression (\code{tf.nn.softmax\_cross\_entropy\_with\_logits}). This method applies a softmax nonlinearity to the output of the network and calculates the cross-entropy between the normalized predictions and a 1-hot encoding of the label. Various Optimizers were tested, with the Adam-Optimizer converging faster and to a higher accuracy compared to Momentum-Optimizer and Gradient-Descent-Optimizer.
 	\end{item}
 
 	\begin{item}
-		The CNN had a very high success rate with an accuracy of 99\%, depending on the parameters. Figure~\ref{fig:wrong_preds} shows the predictions which were wrong. 
+		The CNN had an accuracy of up to 99.45\%, depending on the parameters. Figure~\ref{fig:wrong_preds} shows a selection of misclassified images. 
 		\begin{figure}
 			\centering	
 			\begin{subfigure}[b]{0.45\textwidth}
@@ -120,14 +120,14 @@ To test various neural network configurations, run
 	\end{item}
 \pagebreak
 	\begin{item}
-		No. While running solely on a CPU, setting the seed parameter for otherwise randomized initializations will give the same result for each run. The MNIST loader, which randomizes the batches per default, can be seeded via \code{np.random.seed}, while \code{tf.truncated\_normal} and \code{tf.nn.dropout} offer seed parameters. These efforts are of course futile while running on a GPU, since the high degree of multithreaded calculations will result in non-deterministic behaviour. 
+		While running solely on a CPU, setting the seed parameter for otherwise randomized initializations will give the same result for each run. The MNIST loader, which randomizes the batches per default, can be seeded via \code{np.random.seed}, while \code{tf.truncated\_normal} and \code{tf.nn.dropout} offer seed parameters. However, the high degree of multithreaded calculations on the GPU results in non-deterministic behaviour. 
 	\end{item}
 	\begin{item}
 	For the evolution of accuracy with respect to the number of iterations, see 8. Training time on one million samples varied between 132 and 723 seconds on a GeForce GTX 1070, depending on the selection of the parameters.
 	\end{item}
 
 	\begin{item}
-		Choosing a sensible learning rate is imperative. While a very small learning rate might take a long time to converge, a high learning rate might not reach the maximum accuracy at all. As seen in figure~\ref{fig:learning_rate}, choosing a rate of 0.001 is preferable to both 0.01 and 0.0001.
+		Choosing a sensible learning rate is imperative. While a very small learning rate might take a long time to converge, a high learning rate might not reach the maximum accuracy or converge at all. As seen in figure~\ref{fig:learning_rate}, choosing a rate of 0.001 is preferable to both 0.01 and 0.0001.
 			\begin{figure}
 				\centering	
 				\includegraphics[width=0.7\textwidth]{figures/learning_rate}
@@ -151,12 +151,12 @@ To test various neural network configurations, run
 			\caption{parameter comparison}
 			\label{fig:parameters}
 		\end{figure}
-		Figure~\ref{fig:parameters} details the accuracy in respect to various parameter changes. For the batch size and the number of kernels, a higher value results in better accuracy. While this is also the case for the kernel size, the calculation is more costly. The calculation time needed for a kernel size of 5 doubles the kernel size of 3. For the pooling, the best results are achieved with a value of 4. This seems to be the maximum, though, since additional tests have shown that an even higher value of 7 or even 14 have a much lower rated result.
+		Figure~\ref{fig:parameters} details the accuracy in respect to various parameter changes. For the batch size and the number of kernels, a higher value results in better accuracy. While this is also the case for the kernel size, the calculation is more costly. The calculation time needed on a CPU for a kernel size of 5 doubles compared to the kernel size of 3. For the max pooling, the best results are achieved with a value of 4. This seems to be the maximum, though, since additional tests have shown that an even higher value of 7 or even 14 have a much lower rated result.
 		The dropout keep probability shows the best results for a value of 0.25. 
 		
 	\end{item}
 	\begin{item}
-		Table \ref{smallest_conf} shows two acceptable but small configurations.
+		Table \ref{smallest_conf} shows two small configurations with still "good" accuracy.
 		\begin{table}[h]
 			\caption{Minimal configurations}
 			\label{smallest_conf}
@@ -188,7 +188,7 @@ To test various neural network configurations, run
 		\begin{figure}[h]
 			\centering	
 			\begin{subfigure}[b]{0.45\textwidth}
-				\includegraphics[width=\textwidth]{figures/pool_cpu}
+				\includegraphics[width=\textwidth]{figures/pool}
 				\caption{the plot}
 				\label{fig:pooling_cpu}
 			\end{subfigure}	

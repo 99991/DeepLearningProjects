@@ -185,10 +185,13 @@ To test various neural network configurations, run
 	\begin{item}
 		Table \ref{pooling_comp_table} depicts the different pooling kernel sizes and its consequences. A kernel size of 1 is the equivalent to no pooling.
 		
+		For these tests, we used the configuration listed in \ref{pool_conf} to get bigger differences in runtime:
+		
+		
 		\begin{figure}[h]
-			\centering	
+			\centering
 			\begin{subfigure}[b]{0.45\textwidth}
-				\includegraphics[width=\textwidth]{figures/pool_cpu}
+				\includegraphics[width=\textwidth]{figures/pool_gpu}
 				\caption{the plot}
 				\label{fig:pooling_cpu}
 			\end{subfigure}	
@@ -198,19 +201,42 @@ To test various neural network configurations, run
 					\toprule
 					Pooling Kernel Size     & Seconds & Accuracy \\
 					\midrule
-					1 & 261.9 & 0.8438 \\
-					2 & 255.7 & 0.8668 \\
-					4 & 214.0 & 0.7905 \\
-					7 & 211.8 & 0.7401 \\
-					14 & 209.5 & 0.454 \\
+					1 & 86.6 & 0.9903 \\
+					2 & 59.2 & 0.9921 \\
+					4 & 51.7 & 0.9928 \\
+					7 & 50.0 & 0.9916 \\
+					14 & 48.4 & 0.9888 \\
 					\bottomrule
 					%		\vspace{1pt}
 				\end{tabular}
 				\caption{the table}
 				\label{pooling_comp_table}
-			\end{subtable}	
+			\end{subtable}
+			\begin{subtable}[b]{0.8\textwidth}
+				\caption{Configurations for pooling tests}
+				\label{pool_conf}
+				\centering
+				\begin{tabular}{ll}
+					\toprule
+					Parameter     & Accuracy 97.4\%     \\
+					\midrule
+					num\_hidden & 512 \\
+					num\_kernels1 & 32 \\
+					learning\_rate & 0.001 \\
+					regularization\_factor & 0.0001 \\
+					batch\_size & 1024 \\
+					dropout\_keep\_probability & 0.25 \\
+					seed & 666 \\
+					kernel1\_size & 7 \\
+					test\_interval & 100 \\
+					num\_batches & 2001 \\
+					\bottomrule
+				\end{tabular}
+			\end{subtable}
+			\quad	
 			\caption{pooling comparisons}
 			\label{pooling_comparisons}
+			
 		\end{figure}
 	\end{item}
 

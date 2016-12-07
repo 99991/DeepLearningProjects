@@ -1,5 +1,6 @@
 \documentclass{article}
 
+
 % if you need to pass options to natbib, use, e.g.:
 % \PassOptionsToPackage{numbers, compress}{natbib}
 % before loading nips_2016
@@ -21,10 +22,15 @@
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{graphicx}
+\usepackage{wrapfig}
+%\usepackage{caption}
+\usepackage{subcaption}
+
 
 \def\code#1{\texttt{#1}}
 
-\title{Formatting instructions for NIPS 2016}
+\title{Solution for Project \#1 \\\large Deep Learning, HHU 2016}
+
 
 % The \author macro works with any number of authors. There are two
 % commands used to separate the names and addresses of multiple
@@ -63,399 +69,152 @@
 }
 
 \begin{document}
-% \nipsfinalcopy is no longer used
-
 \maketitle
-
-\begin{abstract}
-  Ganz tolles Abstract
-\end{abstract}
-
-\section{Questions}
-\subsection{1}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figures/network}
-	\caption{The network}
-	\label{fig:network}
-\end{figure}
-Figure~\ref{fig:network} describes the architecture of our CNN. We chose a small and therefore fast to train network, while still achieving high accuracy. We also tried larger networks through adding another conv-relu-pool layer and more hidden layers, with no improvement in accuracy but an increase in training time. The ReLu activation function was chosen because it performed better than tanh activation function.
-
-\subsection{2}
-The CNN was trained with standard parameters using softmax regression (\code{tf.nn.softmax\_cross\_entropy\_with\_logits}). This method applies a softmax nonlinearity to the output of the network and calculates the cross-entropy between the normalized predictions and a 1-hot encoding of the label. Various Optimizers were tested, with the Adam-Optimizer converging faster and to a higher accuracy compared to Momentum-Optimizer and Gradient-Descent-Optimizer.
-
-\subsection{3}
-Please see 8.
-
-\subsection{4}
-No. While running solely on a CPU, setting the seed parameter for otherwise randomized initializations will give the same result for each run. The MNIST loader, which randomizes the batches per default, can be seeded via \code{np.random.seed}, while \code{tf.truncated\_normal} and \code{tf.nn.dropout} offer seed parameters. These efforts are of course futile while running on a GPU, since the high degree of multithreaded calculations will result in non-deterministic behaviour. 
-
-\subsection{5}
-For the evolution of accuracy with respect to the number of iterations, see 8. Training time on one million samples varied between 132 and 723 seconds on a GeForce GTX 1070, depending on the selection of the parameters.
-
-\subsection{6}
-Choosing a sensible learning rate is imperative. While a very small learning rate might take a long time to converge, a high learning rate might not reach the maximum accuracy at all. As seen in figure~\ref{fig:learning_rate}, choosing a rate of 0.001 is preferable to both 0.01 and 0.0001.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{figures/learning_rate}
-	\caption{learning rate}
-	\label{fig:learning_rate}
-\end{figure}
-
-\subsection{7} 
-A CNN basically trains a feature extractor which is then used to classify any given data, preferably of the same type as the training data, in our case images. Figure~\ref{fig:vis_cnn} shows a visualization of these features.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{figures/99_43}
-	\caption{visualization of CNN learning}
-	\label{fig:vis_cnn}
-\end{figure}
-
-\subsection{8} 
-
-Figure~\ref{fig:parameters} details the accuracy in respect to various parameter changes. For the batch size and the number of kernels, a higher value results in better accuracy. While this is also the case for the kernel size, the calculation is more costly. The calculation time needed for a kernel size of 5 doubles the kernel size of 3. For the pooling, the best results are achieved with a value of 4. This seems to be the maximum, though, since additional tests have shown that an even higher value of 7 or even 14 have a much lower rated result.
-The dropout keep probability shows the best results for a value of 0.25. 
-
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.3\textwidth]{figures/dropout_keep_probability}
-	\includegraphics[width=0.3\textwidth]{figures/batch_size}
-	\includegraphics[width=0.3\textwidth]{figures/kernel1_size}
-	\includegraphics[width=0.3\textwidth]{figures/num_kernels1}
-	\includegraphics[width=0.3\textwidth]{figures/num_hidden}
-	\includegraphics[width=0.3\textwidth]{figures/pool}
-	\caption{parameter comparison}
-	\label{fig:parameters}
-\end{figure}
-
-\subsection{9}
-Table \ref{smallest_conf} shows two acceptable but small configurations.
- \begin{table}[t]
- 	\caption{Configurations}
- 	\label{smallest_conf}
- 	\centering
- 	\begin{tabular}{lll}
- 		\toprule
- 		Parameter     & Accuracy 97.4\%     & Accuracy 99\% \\
- 		\midrule
- 		num\_hidden & 64 & 512 \\
- 		num\_kernels1 & 4 & 16 \\
- 		learning\_rate & 0.001 & 0.001 \\
- 		regularization\_factor & 0.0001 & 0.0001 \\
- 		batch\_size & 2048 & 512 \\
- 		dropout\_keep\_probability & 0.25 & 0.25 \\
- 		seed & 666 & 666 \\
- 		kernel1\_size & 3 & 5 \\
- 		test\_interval & 100 & 100 \\
- 		num\_batches & 20001 & 2001 \\
- 		pool & 4 & 4 \\
- 		
- 		
- 		\bottomrule
- 	\end{tabular}
- \end{table}
-
-\subsection{10}
-Table \ref{pooling_comparison} shows different pooling kernel sizes.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{figures/pool_cpu}
-	\caption{The network}
-	\label{fig:pooling_cpu}
-\end{figure}
-\begin{table}[t]
-	\caption{pooling kernel size comparison}
-	\label{pooling_comparison}
-	\centering
-	\begin{tabular}{lll}
-		\toprule
-		Pooling Kernel Size     & Seconds & Accuracy \\
-		\midrule
-		1 & 261.9 & 0.8438 \\
-		2 & 255.7 & 0.8668 \\
-		4 & 214.0 & 0.7905 \\
-		7 & 211.8 & 0.7401 \\
-		14 & 209.5 & 0.454 \\
-		\bottomrule
-	\end{tabular}
-\end{table}
 
 \section{Code and Architecture}
 
-The code is provided as Github repository and available under
+The code is provided as GitHub repository and is available under
 \begin{center}
-  \url{https://github.com/99991/DeepLearningProjects/tree/master/projects}
+	\url{https://github.com/99991/DeepLearningProjects/tree/master/projects}
 \end{center}
 
-\subsection{Code}
-
-
-\subsection{Architecture}
-
-\section{Training and Test}
-\label{gen_inst}
-
-The text must be confined within a rectangle 5.5~inches (33~picas)
-wide and 9~inches (54~picas) long. The left margin is 1.5~inch
-(9~picas).  Use 10~point type with a vertical spacing (leading) of
-11~points.  Times New Roman is the preferred typeface throughout, and
-will be selected for you by default.  Paragraphs are separated by
-\nicefrac{1}{2}~line space (5.5 points), with no indentation.
-
-The paper title should be 17~point, initial caps/lower case, bold,
-centered between two horizontal rules. The top rule should be 4~points
-thick and the bottom rule should be 1~point thick. Allow
-\nicefrac{1}{4}~inch space above and below the title to rules. All
-pages should start at 1~inch (6~picas) from the top of the page.
-
-For the final version, authors' names are set in boldface, and each
-name is centered above the corresponding address. The lead author's
-name is to be listed first (left-most), and the co-authors' names (if
-different address) are set to follow. If there is only one co-author,
-list both author and co-author side by side.
-
-Please pay special attention to the instructions in Section \ref{others}
-regarding figures, tables, acknowledgments, and references.
-
-\section{Headings: first level}
-\label{headings}
-
-All headings should be lower case (except for first word and proper
-nouns), flush left, and bold.
-
-First-level headings should be in 12-point type.
-
-\subsection{Headings: second level}
-
-Second-level headings should be in 10-point type.
-
-\subsubsection{Headings: third level}
-
-Third-level headings should be in 10-point type.
-
-\paragraph{Paragraphs}
-
-There is also a \verb+\paragraph+ command available, which sets the
-heading in bold, flush left, and inline with the text, with the
-heading followed by 1\,em of space.
-
-\section{Citations, figures, tables, references}
-\label{others}
-
-These instructions apply to everyone.
-
-\subsection{Citations within the text}
-
-The \verb+natbib+ package will be loaded for you by default.
-Citations may be author/year or numeric, as long as you maintain
-internal consistency.  As to the format of the references themselves,
-any style is acceptable as long as it is used consistently.
-
-The documentation for \verb+natbib+ may be found at
+To test various neural network configurations, run
 \begin{center}
-  \url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
+	\url{https://github.com/99991/DeepLearningProjects/blob/master/projects/test/test_runner.py}
 \end{center}
-Of note is the command \verb+\citet+, which produces citations
-appropriate for use in inline text.  For example,
-\begin{verbatim}
-   \citet{hasselmo} investigated\dots
-\end{verbatim}
-produces
-\begin{quote}
-  Hasselmo, et al.\ (1995) investigated\dots
-\end{quote}
 
-If you wish to load the \verb+natbib+ package with options, you may
-add the following before loading the \verb+nips_2016+ package:
-\begin{verbatim}
-   \PassOptionsToPackage{options}{natbib}
-\end{verbatim}
+\newpage
 
-If \verb+natbib+ clashes with another package you load, you can add
-the optional argument \verb+nonatbib+ when loading the style file:
-\begin{verbatim}
-   \usepackage[nonatbib]{nips_2016}
-\end{verbatim}
-
-As submission is double blind, refer to your own published work in the
-third person. That is, use ``In the previous work of Jones et
-al.\ [4],'' not ``In our previous work [4].'' If you cite your other
-papers that are not widely available (e.g., a journal paper under
-review), use anonymous author names in the citation, e.g., an author
-of the form ``A.\ Anonymous.''
-
-\subsection{Footnotes}
-
-Footnotes should be used sparingly.  If you do require a footnote,
-indicate footnotes with a number\footnote{Sample of the first
-  footnote.} in the text. Place the footnotes at the bottom of the
-page on which they appear.  Precede the footnote with a horizontal
-rule of 2~inches (12~picas).
-
-Note that footnotes are properly typeset \emph{after} punctuation
-marks.\footnote{As in this example.}
-
-\subsection{Figures}
-
-All artwork must be neat, clean, and legible. Lines should be dark
-enough for purposes of reproduction. The figure number and caption
-always appear after the figure. Place one line space before the figure
-caption and one line space after the figure. The figure caption should
-be lower case (except for first word and proper nouns); figures are
-numbered consecutively.
-
-You may use color figures.  However, it is best for the figure
-captions and the paper body to be legible if the paper is printed in
-either black/white or in color.
-\begin{figure}[h]
-  \centering
-  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
-  \caption{Sample figure caption.}
+\section{Questions}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/network}
+	\caption{The network}
+	\label{fig:network}
 \end{figure}
+\begin{enumerate}
+	\begin{item}
+		Figure~\ref{fig:network} describes the architecture of our CNN. We chose a small and therefore fast to train network, while still achieving high accuracy. We also tried larger networks through adding another conv-relu-pool layer and more hidden layers, with no improvement in accuracy but an increase in training time. The ReLu activation function was chosen because it performed better than tanh activation function.
+	\end{item}
+	\begin{item}
+		The CNN was trained with standard parameters using softmax regression (\code{tf.nn.softmax\_cross\_entropy\_with\_logits}). This method applies a softmax nonlinearity to the output of the network and calculates the cross-entropy between the normalized predictions and a 1-hot encoding of the label. Various Optimizers were tested, with the Adam-Optimizer converging faster and to a higher accuracy compared to Momentum-Optimizer and Gradient-Descent-Optimizer.
+	\end{item}
 
-\subsection{Tables}
+	\begin{item}
+		The CNN had a very high success rate with an accuracy of 99\%, depending on the parameters. Figure~\ref{fig:wrong_preds} shows the predictions which were wrong. 
+		\begin{figure}
+			\centering	
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=\textwidth]{figures/wrong_predictions}
+				\caption{wrong predictions}
+				\label{fig:wrong_preds}
+			\end{subfigure}	
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=\textwidth]{figures/99_43}
+				\vspace{-24pt}
+				\caption{visualization of CNN learning}
+				\label{fig:vis_cnn}
+			\end{subfigure}	
+			\caption{visualizations for questions 3 and 7}
+		\end{figure}
+	\end{item}
+\pagebreak
+	\begin{item}
+		No. While running solely on a CPU, setting the seed parameter for otherwise randomized initializations will give the same result for each run. The MNIST loader, which randomizes the batches per default, can be seeded via \code{np.random.seed}, while \code{tf.truncated\_normal} and \code{tf.nn.dropout} offer seed parameters. These efforts are of course futile while running on a GPU, since the high degree of multithreaded calculations will result in non-deterministic behaviour. 
+	\end{item}
+	\begin{item}
+	For the evolution of accuracy with respect to the number of iterations, see 8. Training time on one million samples varied between 132 and 723 seconds on a GeForce GTX 1070, depending on the selection of the parameters.
+	\end{item}
 
-All tables must be centered, neat, clean and legible.  The table
-number and title always appear before the table.  See
-Table~\ref{sample-table}.
+	\begin{item}
+		Choosing a sensible learning rate is imperative. While a very small learning rate might take a long time to converge, a high learning rate might not reach the maximum accuracy at all. As seen in figure~\ref{fig:learning_rate}, choosing a rate of 0.001 is preferable to both 0.01 and 0.0001.
+			\begin{figure}
+				\centering	
+				\includegraphics[width=0.7\textwidth]{figures/learning_rate}
+				\caption{learning rate}
+				\label{fig:learning_rate}
+			\end{figure}
 
-Place one line space before the table title, one line space after the
-table title, and one line space after the table. The table title must
-be lower case (except for first word and proper nouns); tables are
-numbered consecutively.
+	\end{item}
+	\begin{item}
+		A CNN basically trains a feature extractor which is then used to classify any given data, preferably of the same type as the training data, in our case images. Figure~\ref{fig:vis_cnn} shows a visualization of these features.
+	\end{item}
+	\begin{item}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.3\textwidth]{figures/dropout_keep_probability}
+			\includegraphics[width=0.3\textwidth]{figures/batch_size}
+			\includegraphics[width=0.3\textwidth]{figures/kernel1_size}
+			\includegraphics[width=0.3\textwidth]{figures/num_kernels1}
+			\includegraphics[width=0.3\textwidth]{figures/num_hidden}
+			\includegraphics[width=0.3\textwidth]{figures/pool}
+			\caption{parameter comparison}
+			\label{fig:parameters}
+		\end{figure}
+		Figure~\ref{fig:parameters} details the accuracy in respect to various parameter changes. For the batch size and the number of kernels, a higher value results in better accuracy. While this is also the case for the kernel size, the calculation is more costly. The calculation time needed for a kernel size of 5 doubles the kernel size of 3. For the pooling, the best results are achieved with a value of 4. This seems to be the maximum, though, since additional tests have shown that an even higher value of 7 or even 14 have a much lower rated result.
+		The dropout keep probability shows the best results for a value of 0.25. 
+		
+	\end{item}
+	\begin{item}
+		Table \ref{smallest_conf} shows two acceptable but small configurations.
+		\begin{table}[h]
+			\caption{Minimal configurations}
+			\label{smallest_conf}
+			\centering
+			\begin{tabular}{lll}
+				\toprule
+				Parameter     & Accuracy 97.4\%     & Accuracy 99\% \\
+				\midrule
+				num\_hidden & 64 & 512 \\
+				num\_kernels1 & 4 & 16 \\
+				learning\_rate & 0.001 & 0.001 \\
+				regularization\_factor & 0.0001 & 0.0001 \\
+				batch\_size & 2048 & 512 \\
+				dropout\_keep\_probability & 0.25 & 0.25 \\
+				seed & 666 & 666 \\
+				kernel1\_size & 3 & 5 \\
+				test\_interval & 100 & 100 \\
+				num\_batches & 20001 & 2001 \\
+				pool & 4 & 4 \\
+				
+				
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{item}
+	\begin{item}
+		Table \ref{pooling_comp_table} depicts the different pooling kernel sizes and its consequences. A kernel size of 1 is the equivalent to no pooling.
+		
+		\begin{figure}[h]
+			\centering	
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=\textwidth]{figures/pool_cpu}
+				\caption{the plot}
+				\label{fig:pooling_cpu}
+			\end{subfigure}	
+			\quad
+			\begin{subtable}[b]{0.4\textwidth}
+				\begin{tabular}{lll}
+					\toprule
+					Pooling Kernel Size     & Seconds & Accuracy \\
+					\midrule
+					1 & 261.9 & 0.8438 \\
+					2 & 255.7 & 0.8668 \\
+					4 & 214.0 & 0.7905 \\
+					7 & 211.8 & 0.7401 \\
+					14 & 209.5 & 0.454 \\
+					\bottomrule
+					%		\vspace{1pt}
+				\end{tabular}
+				\caption{the table}
+				\label{pooling_comp_table}
+			\end{subtable}	
+			\caption{pooling comparisons}
+			\label{pooling_comparisons}
+		\end{figure}
+	\end{item}
 
-Note that publication-quality tables \emph{do not contain vertical
-  rules.} We strongly suggest the use of the \verb+booktabs+ package,
-which allows for typesetting high-quality, professional tables:
-\begin{center}
-  \url{https://www.ctan.org/pkg/booktabs}
-\end{center}
-This package was used to typeset Table~\ref{sample-table}.
-
-\begin{table}[t]
-  \caption{Sample table title}
-  \label{sample-table}
-  \centering
-  \begin{tabular}{lll}
-    \toprule
-    \multicolumn{2}{c}{Part}                   \\
-    \cmidrule{1-2}
-    Name     & Description     & Size ($\mu$m) \\
-    \midrule
-    Dendrite & Input terminal  & $\sim$100     \\
-    Axon     & Output terminal & $\sim$10      \\
-    Soma     & Cell body       & up to $10^6$  \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\section{Final instructions}
-
-Do not change any aspects of the formatting parameters in the style
-files.  In particular, do not modify the width or length of the
-rectangle the text should fit into, and do not change font sizes
-(except perhaps in the \textbf{References} section; see below). Please
-note that pages should be numbered.
-
-\section{Preparing PDF files}
-
-Please prepare submission files with paper size ``US Letter,'' and
-not, for example, ``A4.''
-
-Fonts were the main cause of problems in the past years. Your PDF file
-must only contain Type 1 or Embedded TrueType fonts. Here are a few
-instructions to achieve this.
-
-\begin{itemize}
-
-\item You should directly generate PDF files using \verb+pdflatex+.
-
-\item You can check which fonts a PDF files uses.  In Acrobat Reader,
-  select the menu Files$>$Document Properties$>$Fonts and select Show
-  All Fonts. You can also use the program \verb+pdffonts+ which comes
-  with \verb+xpdf+ and is available out-of-the-box on most Linux
-  machines.
-
-\item The IEEE has recommendations for generating PDF files whose
-  fonts are also acceptable for NIPS. Please see
-  \url{http://www.emfield.org/icuwb2010/downloads/IEEE-PDF-SpecV32.pdf}
-
-\item \verb+xfig+ "patterned" shapes are implemented with bitmap
-  fonts.  Use "solid" shapes instead.
-
-\item The \verb+\bbold+ package almost always uses bitmap fonts.  You
-  should use the equivalent AMS Fonts:
-\begin{verbatim}
-   \usepackage{amsfonts}
-\end{verbatim}
-followed by, e.g., \verb+\mathbb{R}+, \verb+\mathbb{N}+, or
-\verb+\mathbb{C}+ for $\mathbb{R}$, $\mathbb{N}$ or $\mathbb{C}$.  You
-can also use the following workaround for reals, natural and complex:
-\begin{verbatim}
-   \newcommand{\RR}{I\!\!R} %real numbers
-   \newcommand{\Nat}{I\!\!N} %natural numbers
-   \newcommand{\CC}{I\!\!\!\!C} %complex numbers
-\end{verbatim}
-Note that \verb+amsfonts+ is automatically loaded by the
-\verb+amssymb+ package.
-
-\end{itemize}
-
-If your file contains type 3 fonts or non embedded TrueType fonts, we
-will ask you to fix it.
-
-\subsection{Margins in \LaTeX{}}
-
-Most of the margin problems come from figures positioned by hand using
-\verb+\special+ or other commands. We suggest using the command
-\verb+\includegraphics+ from the \verb+graphicx+ package. Always
-specify the figure width as a multiple of the line width as in the
-example below:
-\begin{verbatim}
-   \usepackage[pdftex]{graphicx} ...
-   \includegraphics[width=0.8\linewidth]{myfile.pdf}
-\end{verbatim}
-See Section 4.4 in the graphics bundle documentation
-(\url{http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf})
-
-A number of width problems arise when \LaTeX{} cannot properly
-hyphenate a line. Please give LaTeX hyphenation hints using the
-\verb+\-+ command when necessary.
-
-\subsubsection*{Acknowledgments}
-
-Use unnumbered third level headings for the acknowledgments. All
-acknowledgments go at the end of the paper. Do not include
-acknowledgments in the anonymized submission, only in the final paper.
-
-\section*{References}
-
-References follow the acknowledgments. Use unnumbered first-level
-heading for the references. Any choice of citation style is acceptable
-as long as you are consistent. It is permissible to reduce the font
-size to \verb+small+ (9 point) when listing the references. {\bf
-  Remember that you can use a ninth page as long as it contains
-  \emph{only} cited references.}
-\medskip
-
-\small
-
-[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
-for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
-T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
-  Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
-
-[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
-  Exploring Realistic Neural Models with the GEneral NEural SImulation
-  System.}  New York: TELOS/Springer--Verlag.
-
-[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
-learning and recall at excitatory recurrent synapses and cholinergic
-modulation in rat hippocampal region CA3. {\it Journal of
-  Neuroscience} {\bf 15}(7):5249-5262.
+	
+\end{enumerate}
 
 \end{document}

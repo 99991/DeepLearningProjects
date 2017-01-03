@@ -10,8 +10,9 @@ batch_size        = 200
 num_batches       = 10000
 num_kernels       = [8, 8, 16, 16, 32, 32, 32, 32]
 kernel_sizes      = [3, 3, 3, 3, 3, 3, 3, 3]
-hidden_sizes      = [500, 300, 100]
+hidden_sizes      = [500, 100]
 dropout_keep_prob = 1.0
+more_layers       = False
 
 # constants
 image_width = 32
@@ -126,20 +127,22 @@ X = relu(conv(X, kernel_sizes[2], num_kernels[2], num_kernels[1]))
 X = relu(conv(X, kernel_sizes[3], num_kernels[3], num_kernels[2]))
 X = pool(X)
 # image size now: 8x8
+flat_size = 8*8*num_kernels[3]
+if more_layers:
+    X = dropout(X)
+    X = relu(conv(X, kernel_sizes[4], num_kernels[4], num_kernels[3]))
+    X = relu(conv(X, kernel_sizes[5], num_kernels[5], num_kernels[4]))
+    X = relu(conv(X, kernel_sizes[6], num_kernels[6], num_kernels[5]))
+    X = relu(conv(X, kernel_sizes[7], num_kernels[7], num_kernels[6]))
+    X = pool(X)
+    # image size now: 4x4
+    flat_size = 4*4*num_kernels[7]
+
 X = dropout(X)
-X = relu(conv(X, kernel_sizes[4], num_kernels[4], num_kernels[3]))
-X = relu(conv(X, kernel_sizes[5], num_kernels[5], num_kernels[4]))
-X = relu(conv(X, kernel_sizes[6], num_kernels[6], num_kernels[5]))
-X = relu(conv(X, kernel_sizes[7], num_kernels[7], num_kernels[6]))
-X = pool(X)
-# image size now: 4x4
-X = dropout(X)
-flat_size = 4*4*num_kernels[7]
 X = tf.reshape(X, [-1, flat_size])
 X = relu(linear(X, hidden_sizes[0], flat_size))
 X = relu(linear(X, hidden_sizes[1], hidden_sizes[0]))
-X = relu(linear(X, hidden_sizes[2], hidden_sizes[1]))
-X = linear(X, num_labels, hidden_sizes[2])
+X = linear(X, num_labels, hidden_sizes[1])
 Y = X
 
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(Y, labels))

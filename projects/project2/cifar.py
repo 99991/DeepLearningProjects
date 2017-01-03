@@ -164,7 +164,8 @@ for batch in range(num_batches):
         smoothed_dt = dt
     smoothed_dt = smoothed_dt*0.9 + 0.1*dt
 
-    print("[%6d] Train accuracy: %f, %f milliseconds"%(batch,acc, smoothed_dt*1000))
+    if smoothed_dt > 0.5:
+        print("[%6d] Train accuracy: %f, %f milliseconds"%(batch,acc, smoothed_dt*1000))
     
     if batch % 100 == 0:
         test_size = 1000

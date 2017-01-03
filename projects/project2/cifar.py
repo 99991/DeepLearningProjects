@@ -5,9 +5,9 @@ from matplotlib import pyplot as plt
 
 # variables
 learning_rate = 0.001
-batch_size = 100
+batch_size = 200
 num_batches = 10000
-kernel_sizes = [6, 8, 10, 12]
+kernel_sizes = [2, 4, 6, 8]
 hidden_sizes = [500, 100]
 
 # constants
@@ -15,11 +15,11 @@ image_width = 32
 image_height = 32
 num_channels = 3
 num_labels = 10
-seed = 0
+seed = 0 
 
 np.random.seed(0)
 
-cifar_directory = "cifar-10-batches-py"
+cifar_directory = "../../cifar-10-batches-py"
 
 # TODO
 # normalize data
@@ -146,12 +146,12 @@ for batch in range(num_batches):
     sess.run([train], feed_dict=feed_dict)
     acc = sess.run(accuracy, feed_dict=feed_dict)
 
-    print("Train accuracy: %f"%acc)
+    #print("[%d] Train accuracy: %f"%(batch,acc))
     
-    if batch % 10 == 0:
+    if batch % 100 == 0:
         test_size = 1000
         batch_rows = test_rows[:test_size, :]
         batch_labels = test_labels[:test_size, :]
         feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:1.0}
         acc = sess.run(accuracy, feed_dict=feed_dict)
-        print("Test  accuracy: %f <"%acc + "-"*20)
+        print("[%d] Test  accuracy: %f <"%(batch,acc) + "-"*20)

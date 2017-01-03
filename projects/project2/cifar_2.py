@@ -8,7 +8,7 @@ image_height = 32
 num_channels = 3
 num_labels = 10
 learning_rate = 0.001
-batch_size = 10
+batch_size = 1
 
 # layer params
 kernel1_size = 11
@@ -29,7 +29,7 @@ num_kernels5 = 50
 fraction = 10/7
 
 seed = 0
-num_batches = 10
+num_batches = 1
 
 np.random.seed(0)
 
@@ -146,7 +146,7 @@ X = tf.nn.convolution(X, conv5_weights, strides=[1,1], padding='SAME', name='C1'
 X = tf.nn.relu(tf.nn.bias_add(X, conv5_biases))
 
 # flatten data to row shape
-X = tf.reshape(X, [100, num_labels])
+X = tf.reshape(X, [-1, num_labels])
 # relu(XW + b)
 #X = tf.nn.relu(tf.matmul(X, fc1_weights) + fc1_biases)
 # dropout

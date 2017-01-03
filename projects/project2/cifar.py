@@ -150,20 +150,16 @@ tf.global_variables_initializer().run()
 
 accuracies = []
 losses = []
-smoothed_dt = None
 for batch in range(num_batches):
-    t = time.clock()
+    start_time = time.clock()
     batch_images, batch_labels = next_batch(batch_size)
     feed_dict = {images:batch_images, labels:batch_labels, keep_prob:dropout_keep_prob}
     sess.run([train], feed_dict=feed_dict)
     acc = sess.run(accuracy, feed_dict=feed_dict)
-    dt = time.clock() - t
-    if not smoothed_dt:
-        smoothed_dt = dt
-    smoothed_dt = smoothed_dt*0.9 + 0.1*dt
+    delta_time = time.clock() - start_time
 
-    if smoothed_dt > 0.5:
-        print("[%6d] Train accuracy: %f, %f milliseconds"%(batch,acc, smoothed_dt*1000))
+    if delta_time > 0.5:
+        print("[%6d] Train accuracy: %f, %f milliseconds"%(batch,acc, delta_time*1000))
     
     if batch % 100 == 0:
         test_size = 1000

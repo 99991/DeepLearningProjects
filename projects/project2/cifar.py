@@ -1,15 +1,17 @@
+import time
 import cPickle
 import numpy as np
 import tensorflow as tf
 from matplotlib import pyplot as plt
 
 # variables
-learning_rate = 0.001
-batch_size = 200
-num_batches = 10000
-num_kernels = [4, 4, 6, 6, 8, 8, 8, 8]
-hidden_sizes = [500, 300, 100]
-dropout_keep_prob = 0.5
+learning_rate     = 0.001
+batch_size        = 200
+num_batches       = 10000
+num_kernels       = [8, 8, 16, 16, 32, 32, 32, 32]
+kernel_sizes      = [3, 3, 3, 3, 3, 3, 3, 3]
+hidden_sizes      = [500, 300, 100]
+dropout_keep_prob = 1.0
 
 # constants
 image_width = 32
@@ -91,8 +93,8 @@ optimizer = tf.train.AdamOptimizer(learning_rate)
 
 #flat_size = image_width*image_height*num_kernels1
 
-def conv(X, num_kernels, prev_num_kernels):
-    W = tf.Variable(tf.truncated_normal([3, 3, prev_num_kernels, num_kernels], stddev=0.1, seed=seed))
+def conv(X, kernel_size, num_kernels, prev_num_kernels):
+    W = tf.Variable(tf.truncated_normal([kernel_size, kernel_size, prev_num_kernels, num_kernels], stddev=0.1, seed=seed))
     b = tf.Variable(tf.constant(0.0, tf.float32, [num_kernels]))
     X = tf.nn.conv2d(X, W, strides=[1,1,1,1], padding='SAME')
     X = tf.nn.bias_add(X, b)
@@ -115,20 +117,20 @@ def dropout(X):
 # image size: 32x32
 X = rows
 X = tf.reshape(X, [-1, image_width, image_height, 3])
-X = relu(conv(X, num_kernels[0], 3))
-X = relu(conv(X, num_kernels[1], num_kernels[0]))
+X = relu(conv(X, kernel_sizes[0], num_kernels[0], 3))
+X = relu(conv(X, kernel_sizes[1], num_kernels[1], num_kernels[0]))
 X = pool(X)
 # image size now: 16x16
 X = dropout(X)
-X = relu(conv(X, num_kernels[2], num_kernels[1]))
-X = relu(conv(X, num_kernels[3], num_kernels[2]))
+X = relu(conv(X, kernel_sizes[2], num_kernels[2], num_kernels[1]))
+X = relu(conv(X, kernel_sizes[3], num_kernels[3], num_kernels[2]))
 X = pool(X)
 # image size now: 8x8
 X = dropout(X)
-X = relu(conv(X, num_kernels[4], num_kernels[3]))
-X = relu(conv(X, num_kernels[5], num_kernels[4]))
-X = relu(conv(X, num_kernels[6], num_kernels[5]))
-X = relu(conv(X, num_kernels[7], num_kernels[6]))
+X = relu(conv(X, kernel_sizes[4], num_kernels[4], num_kernels[3]))
+X = relu(conv(X, kernel_sizes[5], num_kernels[5], num_kernels[4]))
+X = relu(conv(X, kernel_sizes[6], num_kernels[6], num_kernels[5]))
+X = relu(conv(X, kernel_sizes[7], num_kernels[7], num_kernels[6]))
 X = pool(X)
 # image size now: 4x4
 X = dropout(X)
@@ -150,13 +152,19 @@ tf.global_variables_initializer().run()
 
 accuracies = []
 losses = []
+smoothed_dt = None
 for batch in range(num_batches):
+    t = time.clock()
     batch_rows, batch_labels = next_batch(batch_size)
     feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:dropout_keep_prob}
     sess.run([train], feed_dict=feed_dict)
     acc = sess.run(accuracy, feed_dict=feed_dict)
+    dt = time.clock() - t
+    if not smoothed_dt:
+        smoothed_dt = dt
+    smoothed_dt = smoothed_dt*0.9 + 0.1*dt
 
-    print("[%6d] Train accuracy: %f"%(batch,acc))
+    print("[%6d] Train accuracy: %f, %f milliseconds"%(batch,acc, smoothed_dt*1000))
     
     if batch % 100 == 0:
         test_size = 1000

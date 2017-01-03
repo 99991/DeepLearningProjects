@@ -26,7 +26,7 @@ np.random.seed(0)
 cifar_directory = "../../cifar-10-batches-py"
 
 # TODO
-# normalize data
+# normalize data    
 # generate random data
 # TensorBoard :(
 
@@ -42,51 +42,47 @@ def hot_encode(labels):
 
 def load_batch(name):
     batch = unpickle(cifar_directory + "/" + name)
-    rows = np.array(batch['data'], dtype=np.float32)/256.0
+    images = np.array(batch['data'], dtype=np.float32)/256.0
+    # cifar dataset is in RRR GGG BBB, RRR GGG BBB, ... format
+    images = np.reshape(images, [10000, num_channels, image_width, image_height])
+    images = np.transpose(images, [0, 2, 3, 1])
     labels = hot_encode(np.array(batch['labels']))
-    return rows, labels
+    return images, labels
 
 # load cifar dataset
-train_rows = []
+train_images = []
 train_labels = []
 for i in range(1, 6):
-    rows, labels = load_batch("data_batch_%i"%i)
-    train_rows.append(rows)
+    images, labels = load_batch("data_batch_%i"%i)
+    train_images.append(images)
     train_labels.append(labels)
-test_rows, test_labels = load_batch("test_batch")
-train_rows = np.concatenate(train_rows, 0)
+test_images, test_labels = load_batch("test_batch")
+train_images = np.concatenate(train_images, 0)
 train_labels = np.concatenate(train_labels, 0)
 
 label_names = unpickle(cifar_directory + "/batches.meta")['label_names']
 
-def row_to_image(row):
-    image = np.zeros((image_width, image_height, num_channels), dtype=row.dtype)
-    n = image_width*image_height
-    # there must be a better way to convert RRR GGG BBB to RGB RGB RGB
-    image[:, :, 0] = row[0*n:1*n].reshape((image_width, image_height))
-    image[:, :, 1] = row[1*n:2*n].reshape((image_width, image_height))
-    image[:, :, 2] = row[2*n:3*n].reshape((image_width, image_height))
-    return image
-
-def draw_grid(rows, labels, nx, ny, offset=0):
+def draw_grid(images, labels, nx, ny, offset=0):
+    # Example:
+    # draw_grid(train_images, train_labels, 4, 4)
     for i in range(nx*ny):
-        row = rows[i + offset]
+        image = images[i + offset]
         label = labels[i + offset]
         
         plt.subplot(ny, nx, i + 1)
-        plt.title(label_names[label])
+        plt.title(label_names[np.argmax(label)])
         plt.axis('off')
-        plt.imshow(row_to_image(row))
+        plt.imshow(image)
     plt.show()
 
 def next_batch(n):
-    indices = np.random.randint(len(train_rows), size=n)
-    rows = train_rows[indices, :]
-    labels = train_labels[indices, :]
-    return rows, labels
+    indices = np.random.randint(len(train_images), size=n)
+    images = train_images[indices]
+    labels = train_labels[indices]
+    return images, labels
 
 # placeholders for training and testing data
-rows      = tf.placeholder(tf.float32, [None, image_width*image_height*num_channels])
+images    = tf.placeholder(tf.float32, [None, image_width, image_height, num_channels])
 labels    = tf.placeholder(tf.float32, [None, num_labels])
 keep_prob = tf.placeholder(tf.float32)
 
@@ -116,8 +112,7 @@ def dropout(X):
     return tf.nn.dropout(X, keep_prob)
 
 # image size: 32x32
-X = rows
-X = tf.reshape(X, [-1, image_width, image_height, 3])
+X = images
 X = relu(conv(X, kernel_sizes[0], num_kernels[0], 3))
 X = relu(conv(X, kernel_sizes[1], num_kernels[1], num_kernels[0]))
 X = pool(X)
@@ -158,8 +153,8 @@ losses = []
 smoothed_dt = None
 for batch in range(num_batches):
     t = time.clock()
-    batch_rows, batch_labels = next_batch(batch_size)
-    feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:dropout_keep_prob}
+    batch_images, batch_labels = next_batch(batch_size)
+    feed_dict = {images:batch_images, labels:batch_labels, keep_prob:dropout_keep_prob}
     sess.run([train], feed_dict=feed_dict)
     acc = sess.run(accuracy, feed_dict=feed_dict)
     dt = time.clock() - t
@@ -172,8 +167,8 @@ for batch in range(num_batches):
     
     if batch % 100 == 0:
         test_size = 1000
-        batch_rows = test_rows[:test_size, :]
+        batch_images = test_images[:test_size, :]
         batch_labels = test_labels[:test_size, :]
-        feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:1.0}
+        feed_dict = {images:batch_images, labels:batch_labels, keep_prob:1.0}
         acc = sess.run(accuracy, feed_dict=feed_dict)
         print("[%6d] Test  accuracy: %f <"%(batch,acc) + "-"*20)

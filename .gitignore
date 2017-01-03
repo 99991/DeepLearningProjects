@@ -90,3 +90,4 @@ ENV/
 
 # hide mnist
 mnist/
+cifar-10-batches-py/

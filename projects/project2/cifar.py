@@ -3,28 +3,27 @@ import numpy as np
 import tensorflow as tf
 from matplotlib import pyplot as plt
 
+# variables
+learning_rate = 0.001
+batch_size = 100
+num_batches = 10000
+kernel_sizes = [6, 8, 10, 12]
+hidden_sizes = [500, 100]
+
+# constants
 image_width = 32
 image_height = 32
 num_channels = 3
 num_labels = 10
-learning_rate = 0.001
-batch_size = 100
-kernel1_size = 3
-num_kernels1 = 5
-num_hidden = 100
 seed = 0
-num_batches = 100
 
 np.random.seed(0)
 
+cifar_directory = "cifar-10-batches-py"
+
 # TODO
-# load all batches
 # normalize data
 # generate random data
-# pool
-# dropout
-# different architectures
-# test error
 # TensorBoard :(
 
 def unpickle(path):
@@ -37,14 +36,24 @@ def hot_encode(labels):
     encoded_labels[np.arange(n), labels] = 1
     return encoded_labels
 
-directory = "cifar-10-batches-py"
+def load_batch(name):
+    batch = unpickle(cifar_directory + "/" + name)
+    rows = np.array(batch['data'], dtype=np.float32)/256.0
+    labels = hot_encode(np.array(batch['labels']))
+    return rows, labels
 
-label_names = unpickle(directory + "/batches.meta")['label_names']
-cifar = unpickle(directory + "/data_batch_1")
-cifar_rows = np.array(cifar['data'], dtype=np.float32)/256.0
-cifar_labels = hot_encode(np.array(cifar['labels']))
+# load cifar dataset
+train_rows = []
+train_labels = []
+for i in range(1, 6):
+    rows, labels = load_batch("data_batch_%i"%i)
+    train_rows.append(rows)
+    train_labels.append(labels)
+test_rows, test_labels = load_batch("test_batch")
+train_rows = np.concatenate(train_rows, 0)
+train_labels = np.concatenate(train_labels, 0)
 
-print(cifar_rows.shape)
+label_names = unpickle(cifar_directory + "/batches.meta")['label_names']
 
 def row_to_image(row):
     image = np.zeros((image_width, image_height, num_channels), dtype=row.dtype)
@@ -67,61 +76,61 @@ def draw_grid(rows, labels, nx, ny, offset=0):
     plt.show()
 
 def next_batch(n):
-    indices = np.random.randint(len(cifar_rows), size=n)
-    rows = cifar_rows[indices, :]
-    labels = cifar_labels[indices]
+    indices = np.random.randint(len(train_rows), size=n)
+    rows = train_rows[indices, :]
+    labels = train_labels[indices, :]
     return rows, labels
 
 # placeholders for training and testing data
-rows       = tf.placeholder(tf.float32, [None, image_width*image_height*num_channels])
-labels     = tf.placeholder(tf.float32, [None, num_labels])
-#keep_prob = tf.placeholder(tf.float32)
+rows      = tf.placeholder(tf.float32, [None, image_width*image_height*num_channels])
+labels    = tf.placeholder(tf.float32, [None, num_labels])
+keep_prob = tf.placeholder(tf.float32)
 
 optimizer = tf.train.AdamOptimizer(learning_rate)
 
-flat_size = image_width*image_height*num_kernels1
+#flat_size = image_width*image_height*num_kernels1
 
-conv1_weights = tf.Variable(tf.truncated_normal([kernel1_size, kernel1_size, 3, num_kernels1], stddev=0.1, seed=seed))
-conv1_biases  = tf.Variable(tf.constant(0.0, tf.float32, [num_kernels1]))
-#conv2_weights = tf.Variable(tf.truncated_normal([kernel2_size, kernel2_size, num_kernels1, num_kernels2], stddev=0.1, seed=seed))
-#conv2_biases  = tf.Variable(tf.constant(0.1, tf.float32, [num_kernels2]))
-fc1_weights   = tf.Variable(tf.truncated_normal([flat_size, num_hidden], stddev=0.1, seed=seed))
-fc1_biases    = tf.Variable(tf.constant(0.1, tf.float32, [num_hidden]))
-fc2_weights   = tf.Variable(tf.truncated_normal([num_hidden, num_labels], stddev=0.1, seed=seed))
-fc2_biases    = tf.Variable(tf.constant(0.1, tf.float32, [num_labels]))
+def conv(X, num_kernels, prev_num_kernels):
+    W = tf.Variable(tf.truncated_normal([3, 3, prev_num_kernels, num_kernels], stddev=0.1, seed=seed))
+    b = tf.Variable(tf.constant(0.0, tf.float32, [num_kernels]))
+    X = tf.nn.conv2d(X, W, strides=[1,1,1,1], padding='SAME')
+    X = tf.nn.bias_add(X, b)
+    return X
 
+def pool(X):
+    return tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
+
+def relu(X):
+    return tf.nn.relu(X)
+
+def linear(X, num_weights, num_prev_weights):
+    W = tf.Variable(tf.truncated_normal([num_prev_weights, num_weights], stddev=0.1, seed=seed))
+    b = tf.Variable(tf.constant(0.1, tf.float32, [num_weights]))
+    return tf.matmul(X, W) + b
+
+def dropout(X):
+    return tf.nn.dropout(X, keep_prob)
+
+# image size: 32x32
 X = rows
-# reshape data to image shape
-#X = tf.nn.dropout(X, keep_prob)
 X = tf.reshape(X, [-1, image_width, image_height, 3])
-# conv relu pool
-X = tf.nn.conv2d(X, conv1_weights, strides=[1,1,1,1], padding='SAME')
-X = tf.nn.relu(tf.nn.bias_add(X, conv1_biases))
-#X = tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
-# conv relu pool
-#X = tf.nn.conv2d(X, conv2_weights, strides=[1,1,1,1], padding='SAME')
-#X = tf.nn.relu(tf.nn.bias_add(X, conv2_biases))
-#X = tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
-# flatten data to row shape
-X = tf.reshape(X, [-1, flat_size])
-# relu(XW + b)
-X = tf.nn.relu(tf.matmul(X, fc1_weights) + fc1_biases)
-# dropout
-#X = tf.nn.dropout(X, keep_prob, seed=seed)
-# XW + b
-X = tf.matmul(X, fc2_weights) + fc2_biases
+X = relu(conv(X, kernel_sizes[0], 3))
+X = relu(conv(X, kernel_sizes[1], kernel_sizes[0]))
+X = pool(X)
+# image size now: 16x16
+X = dropout(X)
+X = relu(conv(X, kernel_sizes[2], kernel_sizes[1]))
+X = relu(conv(X, kernel_sizes[3], kernel_sizes[2]))
+X = pool(X)
+# image size now: 8x8
+X = dropout(X)
+X = tf.reshape(X, [-1, 8*8*kernel_sizes[3]])
+X = relu(linear(X, hidden_sizes[0], 8*8*kernel_sizes[3]))
+X = relu(linear(X, hidden_sizes[1], hidden_sizes[0]))
+X = linear(X, num_labels, hidden_sizes[1])
 Y = X
 
-"""
-# regularization to keep weights small
-regularization = (
-        tf.nn.l2_loss(fc1_weights) +
-        tf.nn.l2_loss(fc2_weights) +
-        tf.nn.l2_loss(fc1_biases ) +
-        tf.nn.l2_loss(fc2_biases ))
-"""
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(Y, labels))
-#loss += regularization_factor*regularization
 correct_prediction = tf.equal(tf.argmax(labels, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 train = optimizer.minimize(loss)
@@ -133,7 +142,16 @@ accuracies = []
 losses = []
 for batch in range(num_batches):
     batch_rows, batch_labels = next_batch(batch_size)
-    feed_dict = {rows:batch_rows, labels:batch_labels}#, keep_prob:dropout_keep_probability}
+    feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:1.0}
     sess.run([train], feed_dict=feed_dict)
     acc = sess.run(accuracy, feed_dict=feed_dict)
-    print(acc)
+
+    print("Train accuracy: %f"%acc)
+    
+    if batch % 10 == 0:
+        test_size = 1000
+        batch_rows = test_rows[:test_size, :]
+        batch_labels = test_labels[:test_size, :]
+        feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:1.0}
+        acc = sess.run(accuracy, feed_dict=feed_dict)
+        print("Test  accuracy: %f <"%acc + "-"*20)

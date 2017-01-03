@@ -7,8 +7,9 @@ from matplotlib import pyplot as plt
 learning_rate = 0.001
 batch_size = 200
 num_batches = 10000
-kernel_sizes = [2, 4, 6, 8]
-hidden_sizes = [500, 100]
+num_kernels = [4, 4, 6, 6, 8, 8, 8, 8]
+hidden_sizes = [500, 300, 100]
+dropout_keep_prob = 0.5
 
 # constants
 image_width = 32
@@ -114,20 +115,29 @@ def dropout(X):
 # image size: 32x32
 X = rows
 X = tf.reshape(X, [-1, image_width, image_height, 3])
-X = relu(conv(X, kernel_sizes[0], 3))
-X = relu(conv(X, kernel_sizes[1], kernel_sizes[0]))
+X = relu(conv(X, num_kernels[0], 3))
+X = relu(conv(X, num_kernels[1], num_kernels[0]))
 X = pool(X)
 # image size now: 16x16
 X = dropout(X)
-X = relu(conv(X, kernel_sizes[2], kernel_sizes[1]))
-X = relu(conv(X, kernel_sizes[3], kernel_sizes[2]))
+X = relu(conv(X, num_kernels[2], num_kernels[1]))
+X = relu(conv(X, num_kernels[3], num_kernels[2]))
 X = pool(X)
 # image size now: 8x8
 X = dropout(X)
-X = tf.reshape(X, [-1, 8*8*kernel_sizes[3]])
-X = relu(linear(X, hidden_sizes[0], 8*8*kernel_sizes[3]))
+X = relu(conv(X, num_kernels[4], num_kernels[3]))
+X = relu(conv(X, num_kernels[5], num_kernels[4]))
+X = relu(conv(X, num_kernels[6], num_kernels[5]))
+X = relu(conv(X, num_kernels[7], num_kernels[6]))
+X = pool(X)
+# image size now: 4x4
+X = dropout(X)
+flat_size = 4*4*num_kernels[7]
+X = tf.reshape(X, [-1, flat_size])
+X = relu(linear(X, hidden_sizes[0], flat_size))
 X = relu(linear(X, hidden_sizes[1], hidden_sizes[0]))
-X = linear(X, num_labels, hidden_sizes[1])
+X = relu(linear(X, hidden_sizes[2], hidden_sizes[1]))
+X = linear(X, num_labels, hidden_sizes[2])
 Y = X
 
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(Y, labels))
@@ -142,11 +152,11 @@ accuracies = []
 losses = []
 for batch in range(num_batches):
     batch_rows, batch_labels = next_batch(batch_size)
-    feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:1.0}
+    feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:dropout_keep_prob}
     sess.run([train], feed_dict=feed_dict)
     acc = sess.run(accuracy, feed_dict=feed_dict)
 
-    #print("[%d] Train accuracy: %f"%(batch,acc))
+    print("[%6d] Train accuracy: %f"%(batch,acc))
     
     if batch % 100 == 0:
         test_size = 1000
@@ -154,4 +164,4 @@ for batch in range(num_batches):
         batch_labels = test_labels[:test_size, :]
         feed_dict = {rows:batch_rows, labels:batch_labels, keep_prob:1.0}
         acc = sess.run(accuracy, feed_dict=feed_dict)
-        print("[%d] Test  accuracy: %f <"%(batch,acc) + "-"*20)
+        print("[%6d] Test  accuracy: %f <"%(batch,acc) + "-"*20)

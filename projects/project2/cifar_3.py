@@ -8,14 +8,14 @@ import augment
 
 # variables
 learning_rate     = 0.001
-batch_size        = 100
-num_batches       = 2001
+batch_size        = 64
+num_batches       = 10001
 kernel_size       = 3
 num_kernels       = 16
 num_hidden        = 500
 drop_keep_prob    = 1.0
 augment_images    = False
-weird_net         = True
+weird_net         = False
 
 # constants
 image_width  = 32
@@ -98,6 +98,8 @@ def relu(X, leak=0.1):
 def conv(X):
     X = conv2d(relu(X), num_kernels, kernel_size, activation_fn=None, normalizer_fn=batch_norm)
     X = tf.nn.dropout(X, keep_prob)
+    X = bias_add(X)
+    X = tf.nn.local_response_normalization(X)
     return X
 
 def flatten(X):
@@ -125,12 +127,20 @@ if weird_net:
     all_X.append(X)
     X = tf.concat(1, map(flatten, all_X))
 else:
-    X += conv(X)
+    for _ in range(20):
+        X += conv(X)
+    X = pool(X)
+    for _ in range(5):
+        X += conv(X)
     X = pool(X)
     X = flatten(X)
 
 X = bias_add(X)
+
 X = linear(X, num_hidden, activation_fn=relu, normalizer_fn=batch_norm)
+X = linear(X, num_hidden, activation_fn=relu, normalizer_fn=batch_norm)
+X = linear(X, num_hidden, activation_fn=relu, normalizer_fn=batch_norm)
+
 X = linear(X, num_labels, activation_fn=None)
 Y = X
 #######################################################

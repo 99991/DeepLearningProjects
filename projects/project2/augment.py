@@ -39,9 +39,9 @@ def get_random_brightness(image, a, b, c, d):
 
 def get_augmented_image(image):
     image = get_flipped_image(image)
-    image = get_scaled_cropped_image(image, 1.5)
-    image = get_rotated_image(image, 10)
-    image = get_random_brightness(image, 0.9, 1.3, -0.1, 0.2)
+    #image = get_scaled_cropped_image(image, 1.5)
+    #image = get_rotated_image(image, 10)
+    #image = get_random_brightness(image, 0.9, 1.3, -0.1, 0.2)
     return image
 
 if __name__ == '__main__':

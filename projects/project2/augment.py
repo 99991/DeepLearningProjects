@@ -5,22 +5,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-image = scipy.misc.imread("lena.bmp")
-
-max_angle = 30
-max_scale = 2.0
-
 def rand(a, b):
     return a + (b - a)*np.random.rand()
 
-def get_rotated_image(image):
+def get_rotated_image(image, max_angle):
     angle = rand(-max_angle, max_angle)
     return scipy.misc.imrotate(image, angle)
 
 def get_flipped_image(image):
     return image if np.random.rand() < 0.5 else np.fliplr(image)
 
-def get_scaled_cropped_image(image):
+def get_scaled_cropped_image(image, max_scale = 2.0):
     ny, nx, channels = image.shape
     scale = rand(1, max_scale)
     mx = int(nx*scale)
@@ -36,21 +31,24 @@ def get_scaled_cropped_image(image):
 
     return image
 
-def get_random_brightness(image):
+def get_random_brightness(image, a, b, c, d):
     image = image.astype(np.float32)/256.0
-    image = image*rand(0.8, 2.0) + rand(-0.2, 0.3)
+    image = image*rand(a, b) + rand(c, d)
     image = np.clip(image, 0.0, 1.0)
     return image
 
-def get_modified_image(image):
+def get_augmented_image(image):
     image = get_flipped_image(image)
-    image = get_scaled_cropped_image(image)
-    image = get_rotated_image(image)
-    image = get_random_brightness(image)
+    image = get_scaled_cropped_image(image, 1.5)
+    image = get_rotated_image(image, 10)
+    image = get_random_brightness(image, 0.9, 1.3, -0.1, 0.2)
     return image
 
-for i in range(1, 4*4+1):
-    plt.subplot(4, 4, i)
-    plt.axis('off')
-    plt.imshow(get_modified_image(image))
-plt.show()
+if __name__ == '__main__':
+    image = scipy.misc.imread("lena.bmp")
+
+    for i in range(1, 4*4+1):
+        plt.subplot(4, 4, i)
+        plt.axis('off')
+        plt.imshow(get_augmented_image(image))
+    plt.show()

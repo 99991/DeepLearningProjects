@@ -11,7 +11,7 @@ learning_rate     = 0.001
 batch_size        = 64
 num_batches       = 10001
 kernel_size       = 3
-num_kernels       = 16
+num_kernels       = 32
 num_hidden        = 500
 drop_keep_prob    = 1.0
 augment_images    = False
@@ -127,7 +127,16 @@ if weird_net:
     all_X.append(X)
     X = tf.concat(1, map(flatten, all_X))
 else:
-    for _ in range(20):
+    for _ in range(5):
+        X += conv(X)
+    X = pool(X)
+    for _ in range(5):
+        X += conv(X)
+    X = pool(X)
+    for _ in range(5):
+        X += conv(X)
+    X = pool(X)
+    for _ in range(5):
         X += conv(X)
     X = pool(X)
     for _ in range(5):
@@ -149,7 +158,7 @@ loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(Y, labels))
 correct_prediction = tf.equal(tf.argmax(labels, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 optimizer = tf.train.AdamOptimizer(learning_rate)
-optimizer = tf.train.GradientDescentOptimizer(0.1)
+#optimizer = tf.train.GradientDescentOptimizer(0.1)
 train = optimizer.minimize(loss)
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()

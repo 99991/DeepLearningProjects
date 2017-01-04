@@ -99,7 +99,7 @@ def conv(X):
     X = conv2d(relu(X), num_kernels, kernel_size, activation_fn=None, normalizer_fn=batch_norm)
     X = tf.nn.dropout(X, keep_prob)
     X = bias_add(X)
-    X = tf.nn.local_response_normalization(X)
+    #X = tf.nn.local_response_normalization(X)
     return X
 
 def flatten(X):
@@ -149,6 +149,7 @@ loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(Y, labels))
 correct_prediction = tf.equal(tf.argmax(labels, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 optimizer = tf.train.AdamOptimizer(learning_rate)
+optimizer = tf.train.GradientDescentOptimizer(0.1)
 train = optimizer.minimize(loss)
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()

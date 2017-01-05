@@ -11,16 +11,16 @@ def leaky_relu(X, leak=0.1):
 # variables
 learning_rate      = 0.001
 batch_size         = 64
-num_batches        = 10001
+num_batches        = 2001
 kernel_size        = 3
-num_kernels        = 32
+num_kernels        = 8
 num_hidden         = 500
 residual_depth     = 2
 num_convs          = 2
 pool_depth         = 2
 drop_keep_prob     = 1.0
-augment_images     = False
-normalize_images   = False
+augment_images     = True
+normalize_images   = True
 activation         = [leaky_relu, tf.nn.relu, tf.nn.tanh][0]
 conv_normalization = [tf.nn.local_response_normalization, batch_norm, None][1]
 
@@ -159,7 +159,21 @@ train_losses = []
 test_steps = []
 test_accuracies = []
 test_losses = []
-for batch in range(num_batches):
+
+def show_plots():
+    plt.title("loss")
+    plt.plot(train_steps, train_losses, label="train")
+    plt.plot(test_steps, test_losses, label="test")
+    plt.legend()
+    plt.show()
+
+    plt.title("accuracy")
+    plt.plot(train_steps, train_accuracies, label="train")
+    plt.plot(test_steps, test_accuracies, label="test")
+    plt.legend()
+    plt.show()
+
+def step():
     start_time = time.clock()
     batch_images, batch_labels = next_batch(batch_size)
     feed_dict = {
@@ -194,17 +208,7 @@ for batch in range(num_batches):
         test_steps.append(batch)
         print("[%6d] Test  accuracy: %f <"%(batch,acc) + "-"*20)
 
-def show_plots():
-    plt.title("loss")
-    plt.plot(train_steps, train_losses, label="train")
-    plt.plot(test_steps, test_losses, label="test")
-    plt.legend()
-    plt.show()
-
-    plt.title("accuracy")
-    plt.plot(train_steps, train_accuracies, label="train")
-    plt.plot(test_steps, test_accuracies, label="test")
-    plt.legend()
-    plt.show()
+for batch in range(num_batches):
+    step()
 
 show_plots()

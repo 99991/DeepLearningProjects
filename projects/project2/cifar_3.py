@@ -4,18 +4,25 @@ import numpy as np
 import tensorflow as tf
 from matplotlib import pyplot as plt
 from tensorflow.contrib.layers import conv2d, bias_add, linear, batch_norm
-import augment
+
+def leaky_relu(X, leak=0.1):
+    return tf.select(tf.less(X, 0.0), leak*X, X)
 
 # variables
-learning_rate     = 0.001
-batch_size        = 64
-num_batches       = 10001
-kernel_size       = 3
-num_kernels       = 32
-num_hidden        = 500
-drop_keep_prob    = 1.0
-augment_images    = False
-weird_net         = False
+learning_rate      = 0.001
+batch_size         = 64
+num_batches        = 10001
+kernel_size        = 3
+num_kernels        = 32
+num_hidden         = 500
+residual_depth     = 2
+num_convs          = 2
+pool_depth         = 2
+drop_keep_prob     = 1.0
+augment_images     = False
+normalize_images   = False
+activation         = [leaky_relu, tf.nn.relu, tf.nn.tanh][0]
+conv_normalization = [tf.nn.local_response_normalization, batch_norm, None][1]
 
 # constants
 image_width  = 32
@@ -24,9 +31,6 @@ num_channels = 3
 num_labels   = 10
 
 cifar_directory = "../../cifar-10-batches-py"
-
-# TODO
-# TensorBoard :(
 
 def unpickle(path):
     with open(path, "rb") as f:
@@ -88,68 +92,54 @@ def next_batch(n):
 images      = tf.placeholder(tf.float32, [None, image_width, image_height, num_channels])
 labels      = tf.placeholder(tf.float32, [None, num_labels])
 keep_prob   = tf.placeholder(tf.float32)
+is_training = tf.placeholder(tf.bool)
 
 def pool(X):
     return tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
 
-def relu(X, leak=0.1):
-    return tf.select(tf.less(X, 0.0), leak*X, X)
-
-def conv(X):
-    X = conv2d(relu(X), num_kernels, kernel_size, activation_fn=None, normalizer_fn=batch_norm)
+def conv(X, do_activation_first=True):
+    if do_activation_first:
+        X = activation(X)
+    X = conv2d(
+        X,
+        num_kernels,
+        kernel_size,
+        activation_fn=None,
+        normalizer_fn=conv_normalization)
     X = tf.nn.dropout(X, keep_prob)
     X = bias_add(X)
-    #X = tf.nn.local_response_normalization(X)
     return X
 
 def flatten(X):
     flat_size = np.prod(X.get_shape().as_list()[1:])
     return tf.reshape(X, [-1, flat_size])
-    
+
+def per_image(image):
+    image = tf.image.resize_image_with_crop_or_pad(image, image_height+4, image_width+4)
+    image = tf.random_crop(image, [image_height, image_width, 3])
+    image = tf.image.random_flip_left_right(image)
+    return image
+
 # Model
 #######################################################
 X = images
-X = conv(X)
-if weird_net:
-    all_X = []
-    all_X.append(X)
-    X += conv(X)
-    all_X.append(X)
+if augment_images:
+    X = tf.select(is_training, tf.map_fn(per_image, X), X)
+if normalize_images:
+    X = tf.map_fn(tf.image.per_image_standardization, X)
+X = conv(X, False)
+for _ in range(pool_depth):
+    for _ in range(residual_depth):
+        temp = X
+        for _ in range(num_convs):
+            temp = conv(temp)
+        X += temp
     X = pool(X)
-    all_X.append(X)
-    X += conv(X)
-    all_X.append(X)
-    X += conv(X)
-    all_X.append(X)
-    X = pool(X)
-    all_X.append(X)
-    X += conv(X)
-    all_X.append(X)
-    X = tf.concat(1, map(flatten, all_X))
-else:
-    for _ in range(5):
-        X += conv(X)
-    X = pool(X)
-    for _ in range(5):
-        X += conv(X)
-    X = pool(X)
-    for _ in range(5):
-        X += conv(X)
-    X = pool(X)
-    for _ in range(5):
-        X += conv(X)
-    X = pool(X)
-    for _ in range(5):
-        X += conv(X)
-    X = pool(X)
-    X = flatten(X)
-
+X = flatten(X)
 X = bias_add(X)
-
-X = linear(X, num_hidden, activation_fn=relu, normalizer_fn=batch_norm)
-X = linear(X, num_hidden, activation_fn=relu, normalizer_fn=batch_norm)
-X = linear(X, num_hidden, activation_fn=relu, normalizer_fn=batch_norm)
-
+X = linear(X, num_hidden, activation_fn=activation, normalizer_fn=batch_norm)
+X = linear(X, num_hidden, activation_fn=activation, normalizer_fn=batch_norm)
+X = linear(X, num_hidden, activation_fn=activation, normalizer_fn=batch_norm)
 X = linear(X, num_labels, activation_fn=None)
 Y = X
 #######################################################
@@ -163,23 +153,24 @@ train = optimizer.minimize(loss)
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
 
-def get_augmented_images(images):
-    new_images = []
-    for i in range(len(images)):
-        image = images[i]
-        image = augment.get_augmented_image(image)
-        new_images.append(image)
-    return new_images
-
-accuracies = []
-losses = []
+train_steps = []
+train_accuracies = []
+train_losses = []
+test_steps = []
+test_accuracies = []
+test_losses = []
 for batch in range(num_batches):
     start_time = time.clock()
     batch_images, batch_labels = next_batch(batch_size)
-    if augment_images:
-        batch_images = get_augmented_images(batch_images)
-    feed_dict = {images:batch_images, labels:batch_labels, keep_prob:drop_keep_prob}
-    _, acc = sess.run([train, accuracy], feed_dict=feed_dict)
+    feed_dict = {
+        images:batch_images,
+        labels:batch_labels,
+        keep_prob:drop_keep_prob,
+        is_training:True}
+    _, acc, lss = sess.run([train, accuracy, loss], feed_dict=feed_dict)
+    train_accuracies.append(acc)
+    train_losses.append(lss)
+    train_steps.append(batch)
     delta_time = time.clock() - start_time
 
     # draw batch
@@ -192,6 +183,28 @@ for batch in range(num_batches):
         test_size = 1000
         batch_images = test_images[:test_size, :]
         batch_labels = test_labels[:test_size, :]
-        feed_dict = {images:batch_images, labels:batch_labels, keep_prob:1.0}
-        acc = sess.run(accuracy, feed_dict=feed_dict)
+        feed_dict = {
+            images:batch_images,
+            labels:batch_labels,
+            keep_prob:1.0,
+            is_training:False}
+        acc, lss = sess.run([accuracy, loss], feed_dict=feed_dict)
+        test_accuracies.append(acc)
+        test_losses.append(lss)
+        test_steps.append(batch)
         print("[%6d] Test  accuracy: %f <"%(batch,acc) + "-"*20)
+
+def show_plots():
+    plt.title("loss")
+    plt.plot(train_steps, train_losses, label="train")
+    plt.plot(test_steps, test_losses, label="test")
+    plt.legend()
+    plt.show()
+
+    plt.title("accuracy")
+    plt.plot(train_steps, train_accuracies, label="train")
+    plt.plot(test_steps, test_accuracies, label="test")
+    plt.legend()
+    plt.show()
+
+show_plots()

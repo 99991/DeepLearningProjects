@@ -1,0 +1,72 @@
+cifar_4.py
+
+# variables
+initial_learning_rate = 1.0
+num_batches_for_decay = 2000
+decay_rate            = 0.9
+batch_size            = 64
+num_batches           = 10001
+kernel_size           = 3
+num_kernels           = 32
+num_hidden            = 500
+depth                 = 3
+drop_keep_prob        = 1.0
+augment_images        = True
+normalize_images      = False
+optimizer = tf.train.AdamOptimizer()
+learning_rate = tf.placeholder(tf.float32)
+
+[  8000] Test  accuracy: 0.833000 <--------------------
+[  8100] Test  accuracy: 0.826000 <--------------------
+[  8200] Test  accuracy: 0.836000 <--------------------
+[  8300] Test  accuracy: 0.826000 <--------------------
+[  8400] Test  accuracy: 0.832000 <--------------------
+[  8500] Test  accuracy: 0.834000 <--------------------
+[  8600] Test  accuracy: 0.840000 <--------------------
+[  8700] Test  accuracy: 0.841000 <--------------------
+[  8800] Test  accuracy: 0.836000 <--------------------
+[  8900] Test  accuracy: 0.825000 <--------------------
+[  9000] Test  accuracy: 0.823000 <--------------------
+[  9100] Test  accuracy: 0.839000 <--------------------
+[  9200] Test  accuracy: 0.836000 <--------------------
+[  9300] Test  accuracy: 0.844000 <--------------------
+[  9400] Test  accuracy: 0.834000 <--------------------
+[  9500] Test  accuracy: 0.841000 <--------------------
+[  9600] Test  accuracy: 0.854000 <--------------------
+[  9700] Test  accuracy: 0.847000 <--------------------
+[  9800] Test  accuracy: 0.850000 <--------------------
+[  9900] Test  accuracy: 0.841000 <--------------------
+Learning rate set to 0.000010
+[ 10000] Test  accuracy: 0.828000 <--------------------
+.
+.
+.
+[ 30000] Test  accuracy: 0.870000 <--------------------
+
+64 kernels
+
+128 kernels
+
+[  8000] Test  accuracy: 0.871000 <--------------------
+[  8100] Test  accuracy: 0.863000 <--------------------
+[  8200] Test  accuracy: 0.880000 <--------------------
+[  8300] Test  accuracy: 0.880000 <--------------------
+[  8400] Test  accuracy: 0.876000 <--------------------
+[  8500] Test  accuracy: 0.876000 <--------------------
+[  8600] Test  accuracy: 0.884000 <--------------------
+[  8700] Test  accuracy: 0.882000 <--------------------
+[  8800] Test  accuracy: 0.890000 <--------------------
+[  8900] Test  accuracy: 0.879000 <--------------------
+[  9000] Test  accuracy: 0.873000 <--------------------
+[  9100] Test  accuracy: 0.880000 <--------------------
+[  9200] Test  accuracy: 0.882000 <--------------------
+[  9300] Test  accuracy: 0.876000 <--------------------
+[  9400] Test  accuracy: 0.890000 <--------------------
+[  9500] Test  accuracy: 0.878000 <--------------------
+[  9600] Test  accuracy: 0.896000 <--------------------
+[  9700] Test  accuracy: 0.883000 <--------------------
+[  9800] Test  accuracy: 0.881000 <--------------------
+[  9900] Test  accuracy: 0.876000 <--------------------
+Learning rate set to 0.000010
+[ 10000] Test  accuracy: 0.889000 <--------------------
+

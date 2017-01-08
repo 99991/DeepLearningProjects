@@ -166,7 +166,7 @@ To test various neural network configurations, run
         					30000  & 32 & 87\%  \\
         					10000  & 64 & 85.1\%  \\
 					10000 &128 & 88.9\%  \\
-					14600  & 128 & 91\%  \\
+					14200  & 128 & 91.6\%  \\
 					\bottomrule
      				\end{tabular}
 				\caption{Increase of iterations and kernels}
@@ -174,7 +174,7 @@ To test various neural network configurations, run
 			\end{subtable}
 		\end{figure}
 		
-			By increasing the number of batches to 30000 a test accuracy of 87\% was achieved. Increasing the kernel size to 64 while retaining the batch size of 10000 an accuracy of 85.1\% was reached. A kernel size of 128 resulted in an even higher test accuracy of 88.9\%. 
+			By increasing the number of batches to 30000 a test accuracy of 87\% was achieved. Increasing the kernel size to 64 while retaining a batch size of 10000 was not as successful, but still reached an accuracy of 85.1\%. A kernel size of 128 resulted in an even higher test accuracy of 88.9\%. The network even reached a test accuracy of  91.6\% when increasing a batch size of 14200 with 128 kernels.
 		\end{item}
 		
 		
@@ -182,7 +182,7 @@ To test various neural network configurations, run
 		
 		%d)
 		\begin{item}
-			In [cite] average pooling has yielded into better result, but max pooling has worked better within our network.
+			In [cite] average pooling has yielded better result, but max pooling has worked better within our network.
 			Also, using global average pooling as a regularizer as in [cite] has not had a positiv effect on the test accuracy.
 			
 		\end{item}
@@ -191,7 +191,7 @@ To test various neural network configurations, run
 		
 		%e)
 		\begin{item}
-			Using random cropping as a way to increase the data size has not lead to any significant improvement. 
+			Using random cropping as a way to increase the data size has lead to minor improvements. 
 			Random brightness and saturation has not yielded any success, although this has helped within other implementations [cite].
 		\end{item}
 		
@@ -199,7 +199,7 @@ To test various neural network configurations, run
 		
 		%f)
 		\begin{item}
-			Adding dropout hasn't resulted in any success. With the configuration shown in  \ref{basic_config} adding dropout resulted in a test accuracy of 74.8\%.
+			Adding dropout has not resulted in any success. With the configuration shown in  \ref{basic_config} adding dropout resulted in a test accuracy of 74.8\%.
 		\end{item}
 		
 		

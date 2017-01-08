@@ -3,35 +3,21 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.contrib.layers import linear, bias_add, batch_norm
 
-batch_size = 10
-# given some number of sample sequences
-data_size  = 10
-lstm_size  = 4
-
 path = "project02_task2.csv"
 #path = "google.trends.urlaub.multiTimeline2004-2016.yearly.combined.csv"
 data = np.genfromtxt(path, dtype=float, delimiter=',', names=True)
 
-#x = data['x']
 y = data['y']
 y -= np.mean(y)
 y /= np.max(np.abs(y))
 
 sequence = y
-#sequence += np.linspace(0, 100, len(y))
 
-def make_batch():
-    train_data = []
-    train_target = []
-    for _ in range(batch_size):
-        offset = np.random.randint(len(sequence) - data_size - 1)
-        train_data.append(sequence[offset:offset + data_size])
-        offset += data_size
-        train_target.append(sequence[offset:offset + 1])
-    return train_data, train_target
+data_size = 10
 
-data = tf.placeholder(tf.float32, [batch_size, data_size])
-target = tf.placeholder(tf.float32, [batch_size, 1])
+data = tf.placeholder(tf.float32, [data_size, 1])
+
+target = tf.placeholder(tf.float32, [1])
 
 lstm = tf.nn.rnn_cell.BasicLSTMCell(lstm_size)
 

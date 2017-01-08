@@ -9,16 +9,21 @@ def relu(X, leak=0.1):
     return tf.select(tf.less(X, 0.0), leak*X, X)
 
 # variables
-learning_rate      = 0.001
-batch_size         = 64
-num_batches        = 10001
-kernel_size        = 3
-num_kernels        = 32
-num_hidden         = 500
-depth              = 3
-drop_keep_prob     = 1.0
-augment_images     = True
-normalize_images   = False
+initial_learning_rate = 1.0
+num_batches_for_decay = 2000
+decay_rate            = 0.9
+batch_size            = 64
+num_batches           = 10001
+kernel_size           = 3
+num_kernels           = 32
+num_hidden            = 500
+depth                 = 3
+drop_keep_prob        = 1.0
+augment_images        = True
+normalize_images      = False
+optimizer = tf.train.AdamOptimizer()
+learning_rate = tf.placeholder(tf.float32)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate)
 
 # constants
 image_width  = 32
@@ -85,10 +90,10 @@ def next_batch(n):
     return images, labels
 
 # placeholders for training and testing data
-images      = tf.placeholder(tf.float32, [None, image_width, image_height, num_channels])
-labels      = tf.placeholder(tf.float32, [None, num_labels])
-keep_prob   = tf.placeholder(tf.float32)
-is_training = tf.placeholder(tf.bool)
+images        = tf.placeholder(tf.float32, [None, image_width, image_height, num_channels])
+labels        = tf.placeholder(tf.float32, [None, num_labels])
+keep_prob     = tf.placeholder(tf.float32)
+is_training   = tf.placeholder(tf.bool)
 
 def pool(X):
     return tf.nn.max_pool(X, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
@@ -120,7 +125,9 @@ X = conv(X, num_kernels)
 for _ in range(depth):
     X = relu(bn(X))
     X = conv(X, num_kernels) + conv(bn(conv(X, num_kernels)), num_kernels)
+    X = tf.nn.dropout(X, drop_keep_prob)
     X += conv(relu(bn(conv(relu(bn(X)), num_kernels))), num_kernels)
+    X = tf.nn.dropout(X, drop_keep_prob)
     X = pool(X)
 X = bn(X)
 #X = tf.reduce_mean(X, [1, 2])
@@ -134,8 +141,6 @@ Y = X
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(Y, labels))
 correct_prediction = tf.equal(tf.argmax(labels, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-optimizer = tf.train.AdamOptimizer(learning_rate)
-#optimizer = tf.train.GradientDescentOptimizer(0.1)
 train = optimizer.minimize(loss)
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
@@ -160,14 +165,23 @@ def show_plots():
     plt.legend()
     plt.show()
 
+batch = 0
 def step():
+    global batch
+    global initial_learning_rate
+    
+    if batch % num_batches_for_decay == 0:
+        print("Learning rate set to %f"%initial_learning_rate)
+        initial_learning_rate *= 1.0 - decay_rate
+    
     start_time = time.clock()
     batch_images, batch_labels = next_batch(batch_size)
     feed_dict = {
         images:batch_images,
         labels:batch_labels,
         keep_prob:drop_keep_prob,
-        is_training:True}
+        is_training:True,
+        learning_rate:initial_learning_rate}
     _, acc, lss = sess.run([train, accuracy, loss], feed_dict=feed_dict)
     train_accuracies.append(acc)
     train_losses.append(lss)
@@ -179,7 +193,7 @@ def step():
 
     if delta_time > 0.3:
         print("[%6d] Train accuracy: %f, %f milliseconds"%(batch,acc, delta_time*1000))
-    
+
     if batch % 100 == 0:
         test_size = 1000
         batch_images = test_images[:test_size, :]
@@ -194,8 +208,10 @@ def step():
         test_losses.append(lss)
         test_steps.append(batch)
         print("[%6d] Test  accuracy: %f <"%(batch,acc) + "-"*20)
+    
+    batch += 1
 
-for batch in range(num_batches):
+for _ in range(num_batches):
     step()
 
 show_plots()

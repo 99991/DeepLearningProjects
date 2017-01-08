@@ -90,57 +90,153 @@ To test various neural network configurations, run
 
 \begin{enumerate}
 	\begin{item}
-		CNN on CIFAR-10
+		\textbf{CNN on CIFAR-10}
 	\end{item}
 
 	\begin{enumerate}
+		
+		
+		%a)
 		\begin{item}
 			To accommodate the higher complexity of the CIFAR-10 dataset we chose to train a relatively deep CNN compared to our first project.  
 			%This has yielded the highest success, although at about 85\% still quite far from optimal. 
 			Also, with the number of batches at 10000 and each batch having 64 samples, the training time was increased.
 			
-			The leaky Rectified Linear Unit (ReLU) activation function was used to counter the "dying ReLU" problem. Instead of the function being zero when $x < 0$, it is set to a small negative value of $ 0.01 * x $. 
+			The leaky Rectified Linear Unit (ReLU) activation function was used to counter the "dying ReLU" problem. Instead of the function being zero when $x < 0$, it is set to a small negative value of $ 0.1 * x $. 
 		\end{item}
 		
-		\begin{item}
-			With the deeper CNN and larger training time a success rate of about 85\% was reached, and while this is still far from optimal, it was the best we could do with our limited computational resources. 
-		\end{item}
 		
+		%b)
 		\begin{item}
-			compute...
-		\end{item}
+		\begin{figure}
+		\centering
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=\textwidth]{figures/accuracy_32kernels}
+				\caption{accuracy}
+				\label{fig:basic_accu}
+			\end{subfigure}	
+			\quad
+			\begin{subtable}[b]{0.4\textwidth}
+				\begin{tabular}{lll}
+        					\toprule
+        					Parameter     & Value \\
+        					\midrule
+        					batch\_size & 64  \\
+        					num\_batches & 10001  \\
+        					kernel\_size &3 \\
+        					num\_kernels & 32 \\
+        					num\_hidden & 500 \\
+        					depth & 3 \\
+        					dropout\_keep\_probability & 0.5 \\
+        					\bottomrule
+     				\end{tabular}
+				\caption{Basic configuration}
+				\label{basic_config}
+			\end{subtable}
+		\end{figure}
 		
-		\begin{item}
-			Some papers, like [...] suggest using average pooling, max pooling has worked better within our network, [WERT].
-		\end{item}
-		
-		\begin{item}
-			Frage:[gehoert per image standardization hier her? Z118]
+		Table \ref{basic_config} shows the configuration of our network, while figure \ref{fig:basic_accu} shows its achieved accuracy.		
+			With these parameters a test accuracy of 82.8\% was reached, which seems to be a fairly good number compared to other implementations.
 			
-			Using random cropping as a way to increase the data size has not lead to any significant improvement [WERT]. 
-			Random brightness and saturation has not yielded any success, although this has helped within other implementations, i.e. the Wide Residual Netwokrs used by Zagoruyko and  Komodakis [Quelle].
 		\end{item}
 		
+		
+		
+		%c)
 		\begin{item}
-			better with Dropout: No. [WERT]
+		\begin{figure}
+		\centering
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=\textwidth]{figures/accuracy_64kernels}
+				\caption{accuracy}
+				\label{fig:64kern}
+			\end{subfigure}	
+			\quad
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=\textwidth]{figures/accuracy_128kernels}
+				\caption{accuracy}
+				\label{fig:128kern}
+			\end{subfigure}	
+			\quad
+			\begin{subtable}[b]{0.4\textwidth}
+				\begin{tabular}{lll}
+        					\toprule
+        					number of batches & number of kernels    & Accuracy \\
+        					\midrule
+        					30000  & 32 & 87\%  \\
+        					10000  & 64 & 85.1\%  \\
+					10000 &128 & 88.9\%  \\
+					14600  & 128 & 91\%  \\
+					\bottomrule
+     				\end{tabular}
+				\caption{Increase of iterations and kernels}
+				\label{kernels}
+			\end{subtable}
+		\end{figure}
+		
+			By increasing the number of batches to 30000 a test accuracy of 87\% was achieved. Increasing the kernel size to 64 while retaining the batch size of 10000 an accuracy of 85.1\% was reached. A kernel size of 128 resulted in an even higher test accuracy of 88.9\%. 
 		\end{item}
 		
+		
+		
+		
+		%d)
 		\begin{item}
-			Tensorboard.
+			In [cite] average pooling has yielded into better result, but max pooling has worked better within our network.
+			Also, using global average pooling as a regularizer as in [cite] has not had a positiv effect on the test accuracy.
+			
+		\end{item}
+		
+		
+		
+		%e)
+		\begin{item}
+			Using random cropping as a way to increase the data size has not lead to any significant improvement. 
+			Random brightness and saturation has not yielded any success, although this has helped within other implementations [cite].
+		\end{item}
+		
+		
+		
+		%f)
+		\begin{item}
+			Adding dropout hasn't resulted in any success. With the configuration shown in  \ref{basic_config} adding dropout resulted in a test accuracy of 74.8\%.
+		\end{item}
+		
+		
+		
+		%g)
+		\begin{item}
+			\begin{figure}[p]
+				\centering
+				\includegraphics[width=0.6\textwidth]{figures/cifar_4_Extended}
+				\caption{Tensorboard}
+				\label{fig:tensorboard}
+			\end{figure}
+			Please see  figure \ref{fig:tensorboard}. 
+
 		\end{item}
 		
 		
 	\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
 	
 	\begin{item}
-		Recurrent Neural Network
+		\textbf{Recurrent Neural Network}
 	\end{item}
 	\begin{enumerate}
 		\begin{item}
-			a
+			Our RNN uses a hidden layer in front of the output layer 
 		\end{item}
 			\begin{item}
-			A Long short-term memory (LSTM) cell is recurrent network unit, which can remember values for either long or shirt durations of time. It achieves this by omitting the activation function wich would otherwise reduce the value over time,
+			A Long short-term memory (LSTM) cell utilizes a hidden state in order to calculate a prediction with each time step using information from the previous value of a given sample.
+			
+			%which can remember values for either long or shirt durations of time. It achieves this by omitting the activation function wich would otherwise reduce the value over time,
+			
+			
 		\end{item}
 			\begin{item}
 			c.

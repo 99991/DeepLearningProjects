@@ -206,12 +206,6 @@ To test various neural network configurations, run
 		
 		%g)
 		\begin{item}
-			\begin{figure}[p]
-				\centering
-				\includegraphics[width=0.6\textwidth]{figures/cifar_4_Extended}
-				\caption{Tensorboard}
-				\label{fig:tensorboard}
-			\end{figure}
 			Please see  figure \ref{fig:tensorboard}. 
 
 		\end{item}
@@ -223,38 +217,86 @@ To test various neural network configurations, run
 %%%%%%%%%%%%%%%%%%%%%
 
 
+		\begin{figure}[t]
+			\centering
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=1\textwidth]{figures/sine}
+				\caption{Sine wave}
+				\label{fig:sine}
+			\end{subfigure}	
+			\quad
+			\begin{subfigure}[b]{0.45\textwidth}
+				\includegraphics[width=1\textwidth]{figures/urlaub}
+				\caption{google trends for term "urlaub"}
+				\label{fig:urlaub}
+			\end{subfigure}	
+			\caption{The prediction fit}
+		\end{figure}
+
+
 	
 	\begin{item}
 		\textbf{Recurrent Neural Network}
 	\end{item}
 	\begin{enumerate}
+		
+		%a)
 		\begin{item}
-			Our RNN uses a hidden layer in front of the output layer 
+			Our architecture consists of a linear layer to scale the input, followed by a lstm layer, followed by three linear layers. The number of stacked LSTMs is chosen such that it covers three consecutive sine waves to capture both the shape of the sine wave as well as the increasing amplitude. More sine waves could be covered at the cost of longer training time.
 		\end{item}
-			\begin{item}
-			A Long short-term memory (LSTM) cell utilizes a hidden state in order to calculate a prediction with each time step using information from the previous value of a given sample.
+		
+		
+		
+		%b)
+		\begin{item}
+			A Long short-term memory (LSTM) cell utilizes a hidden state in order to calculate a prediction with each time step using information from the previous value of a given sequence.
 			
-			%which can remember values for either long or shirt durations of time. It achieves this by omitting the activation function wich would otherwise reduce the value over time,
-			
-			
 		\end{item}
-			\begin{item}
-			c.
+		
+		%c)
+		\begin{item}
+			...
 		\end{item}
-			\begin{item}
-			d.
+		
+		%d)
+		\begin{item}
+%			\begin{figure}[t]
+%				\centering
+%				\includegraphics[width=0.6\textwidth]{figures/sine}
+%				\caption{The prediction fit}
+%				\label{fig:sine}
+%			\end{figure}
+			The  figure \ref{fig:sine} shows the prediction fit. The network predicts the sine curve quiet smoothly, but sadly does not increase the amplitude in an expected manner. 
+			To form a test dataset,  the last 100 samples were removed. 
+			The mean squared error is 0.000339 and the maximum absolute difference is 0.038844 between the predicted values and the test dataset.
+	
 		\end{item}
-			\begin{item}
-			e.
+		%e)
+		\begin{item}
+			linear -> lstm -> linear -> linear -> linear -> l2 loss
 		\end{item}
-			\begin{item}
-			f.
+		
+		%f)
+		\begin{item}
+%			\begin{figure}[t]
+%				\centering
+%				\includegraphics[width=0.6\textwidth]{figures/urlaub}
+%				\caption{The number of search queries for the term "urlaub" via google trends}
+%				\label{fig:urlaub}
+%			\end{figure}
+			The  figure \ref{fig:urlaub} shows the number of search queries for the term urlaub starting in the year 2004 until now (blue) as stated by google trends, and our networks prediction (green).
 		\end{item}
 	\end{enumerate}
 
 	
 \end{enumerate}
 
+\begin{figure}[p]
+				\centering
+				\includegraphics[width=0.6\textwidth]{figures/cifar_4_Extended}
+				\caption{Tensorboard}
+				\label{fig:tensorboard}
+			\end{figure}
 
 %\begin{figure}[t]
 %	\centering

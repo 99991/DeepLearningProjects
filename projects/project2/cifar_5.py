@@ -13,7 +13,7 @@ initial_learning_rate = 1.0
 num_batches_for_decay = 2000
 decay_rate            = 0.9
 batch_size            = 64
-num_batches           = 200001
+num_batches           = 100001
 kernel_size           = 3
 num_kernels           = 128
 num_hidden            = 500
@@ -245,7 +245,10 @@ def step():
     
     batch += 1
 
+start_total = time.clock()
 for _ in range(num_batches):
     step()
+time_total = time.clock() - start_total
+print("Total runtime of %f seconds"%time_total)
 
 show_plots()

@@ -53,7 +53,7 @@ def display_kernels(kernels, name):
         kernels_max = tf.reduce_max(kernels)
         kernels = (kernels - kernels_min)/(kernels_max - kernels_min)
         kernels = tf.transpose(kernels, [3, 0, 1, 2])
-        tf.image_summary('kernels', kernels, max_images=3)
+        tf.summary.image('kernels', kernels, max_outputs=3)
 
 # so many weights
 W_conv1 = make_weights([conv1_kernel_size, conv1_kernel_size, 1, conv1_num_kernels], 'first conv layer weights')
@@ -101,7 +101,8 @@ h_fc2 = tf.nn.relu(tf.matmul(h_fc1, W_fc2) + b_fc2)
 y_conv =           tf.matmul(h_fc2, W_fc3) + b_fc3
 
 # softmax cross entropy loss function
-loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y_conv, y))
+loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=y_conv, labels=y))
+#tf
 tf.summary.scalar('loss', loss)
 
 # accuracy testing network
@@ -114,10 +115,10 @@ train = tf.train.AdamOptimizer().minimize(loss)
 
 sess = tf.InteractiveSession()
 
-summaries = tf.merge_all_summaries()
+summaries = tf.summary.merge_all()
 summaries_directory = "summaries"
-train_writer = tf.train.SummaryWriter(summaries_directory + "/train", sess.graph)
-test_writer = tf.train.SummaryWriter(summaries_directory + "/test", sess.graph)
+train_writer = tf.summary.FileWriter(summaries_directory + "/train", sess.graph)
+test_writer = tf.summary.FileWriter(summaries_directory + "/test", sess.graph)
 
 # tensorflow magic
 tf.global_variables_initializer().run()
